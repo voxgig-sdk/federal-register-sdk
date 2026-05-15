@@ -1,0 +1,437 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Federal Register API",
+    "description": "The Federal Register API provides access to data from the Federal Register, allowing users to fetch single or multiple documents, perform searches, and access metadata associated with these documents. This API returns data in both CSV and JSON formats, and no API keys are required for use.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Federal Register API Documentation",
+      "url": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.federalregister.gov/api/v1",
+      "description": "Federal Register API Server"
+    }
+  ],
+  "paths": {
+    "/documents/{document_number}": {
+      "get": {
+        "summary": "Retrieve a single Federal Register document",
+        "description": "Fetches a single document from the Federal Register by its document number. Returns detailed information about the document including metadata.",
+        "operationId": "getDocument",
+        "tags": [
+          "Documents"
+        ],
+        "parameters": [
+          {
+            "name": "document_number",
+            "in": "path",
+            "required": true,
+            "description": "The unique document number of the Federal Register document",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2021-12345"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated list of fields to include in the response",
+            "schema": {
+              "type": "string"
+            },
+            "example": "title,publication_date,agencies"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with document details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Document not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents": {
+      "get": {
+        "summary": "Search and retrieve multiple Federal Register documents",
+        "description": "Performs a search across Federal Register documents and returns a collection of matching documents. Supports filtering, sorting, and pagination.",
+        "operationId": "searchDocuments",
+        "tags": [
+          "Documents"
+        ],
+        "parameters": [
+          {
+            "name": "conditions[term]",
+            "in": "query",
+            "required": false,
+            "description": "Search term to filter documents",
+            "schema": {
+              "type": "string"
+            },
+            "example": "climate change"
+          },
+          {
+            "name": "conditions[agencies][]",
+            "in": "query",
+            "required": false,
+            "description": "Filter by agency slug(s)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "example": [
+              "environmental-protection-agency"
+            ]
+          },
+          {
+            "name": "conditions[type][]",
+            "in": "query",
+            "required": false,
+            "description": "Filter by document type(s)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "RULE",
+                  "PRORULE",
+                  "NOTICE",
+                  "PRESDOCU"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "example": [
+              "RULE"
+            ]
+          },
+          {
+            "name": "conditions[publication_date][year]",
+            "in": "query",
+            "required": false,
+            "description": "Filter by publication year",
+            "schema": {
+              "type": "integer"
+            },
+            "example": 2021
+          },
+          {
+            "name": "conditions[publication_date][gte]",
+            "in": "query",
+            "required": false,
+            "description": "Filter by publication date (greater than or equal to)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2021-01-01"
+          },
+          {
+            "name": "conditions[publication_date][lte]",
+            "in": "query",
+            "required": false,
+            "description": "Filter by publication date (less than or equal to)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2021-12-31"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "Sort order for results",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "newest",
+                "oldest",
+                "relevance"
+              ]
+            },
+            "example": "newest"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Number of results per page (max 1000)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 20
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number for pagination",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "fields[]",
+            "in": "query",
+            "required": false,
+            "description": "Specific fields to include in the response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "example": [
+              "title",
+              "publication_date",
+              "document_number"
+            ]
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "description": "Response format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "csv"
+              ],
+              "default": "json"
+            },
+            "example": "json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matching documents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentSearchResponse"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Document": {
+        "type": "object",
+        "properties": {
+          "abstract": {
+            "type": "string",
+            "description": "Brief summary of the document"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action being taken by the document"
+          },
+          "agencies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Agency"
+            },
+            "description": "Agencies associated with the document"
+          },
+          "body_html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the full HTML body of the document"
+          },
+          "citation": {
+            "type": "string",
+            "description": "Official citation for the document"
+          },
+          "document_number": {
+            "type": "string",
+            "description": "Unique identifier for the document"
+          },
+          "html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the document on FederalRegister.gov"
+          },
+          "pdf_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the PDF version of the document"
+          },
+          "publication_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the document was published"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the document"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "RULE",
+              "PRORULE",
+              "NOTICE",
+              "PRESDOCU"
+            ],
+            "description": "Type of document"
+          },
+          "signing_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the document was signed"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Topics associated with the document"
+          },
+          "full_text_xml_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the full text XML of the document"
+          }
+        }
+      },
+      "Agency": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the agency"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full name of the agency"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier for the agency"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the agency's page on FederalRegister.gov"
+          }
+        }
+      },
+      "DocumentSearchResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Total number of documents matching the search"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the search query"
+          },
+          "total_pages": {
+            "type": "integer",
+            "description": "Total number of pages available"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Document"
+            },
+            "description": "Array of matching documents"
+          },
+          "next_page_url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "URL to the next page of results"
+          },
+          "previous_page_url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "URL to the previous page of results"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error message"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Error code"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Documents",
+      "description": "Operations for retrieving and searching Federal Register documents"
+    }
+  ]
+}

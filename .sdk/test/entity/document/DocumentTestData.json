@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "document": {
+      "DOCUMENT00": {
+        "abstract": "s8c",
+        "action": "s8d",
+        "agency": [],
+        "body_html_url": "s8f",
+        "citation": "s90",
+        "document_number": "s91",
+        "full_text_xml_url": "s92",
+        "html_url": "s93",
+        "pdf_url": "s94",
+        "publication_date": "s95",
+        "signing_date": "s96",
+        "title": "s97",
+        "topic": [],
+        "type": "s99"
+      },
+      "DOCUMENT01": {
+        "abstract": "s118",
+        "action": "s119",
+        "agency": [],
+        "body_html_url": "s11b",
+        "citation": "s11c",
+        "document_number": "s11d",
+        "full_text_xml_url": "s11e",
+        "html_url": "s11f",
+        "pdf_url": "s120",
+        "publication_date": "s121",
+        "signing_date": "s122",
+        "title": "s123",
+        "topic": [],
+        "type": "s125"
+      },
+      "DOCUMENT02": {
+        "abstract": "s1a4",
+        "action": "s1a5",
+        "agency": [],
+        "body_html_url": "s1a7",
+        "citation": "s1a8",
+        "document_number": "s1a9",
+        "full_text_xml_url": "s1aa",
+        "html_url": "s1ab",
+        "pdf_url": "s1ac",
+        "publication_date": "s1ad",
+        "signing_date": "s1ae",
+        "title": "s1af",
+        "topic": [],
+        "type": "s1b1"
+      }
+    }
+  },
+  "new": {
+    "document": {
+      "document_ref01": {
+        "abstract": "s230",
+        "action": "s231",
+        "agency": [],
+        "body_html_url": "s233",
+        "citation": "s234",
+        "document_number": "s235",
+        "full_text_xml_url": "s236",
+        "html_url": "s237",
+        "pdf_url": "s238",
+        "publication_date": "s239",
+        "signing_date": "s23a",
+        "title": "s23b",
+        "topic": [],
+        "type": "s23d"
+      }
+    }
+  }
+}

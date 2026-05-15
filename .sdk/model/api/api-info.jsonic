@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Federal Register API Documentation"
+        url: "https://www.federalregister.gov/reader-aids/developer-resources/rest-api"
+      }
+      description: "The Federal Register API provides access to data from the Federal Register, allowing users to fetch single or multiple documents, perform searches, and access metadata associated with these documents. This API returns data in both CSV and JSON formats, and no API keys are required for use."
+      servers: [
+        {
+          description: "Federal Register API Server"
+          url: "https://www.federalregister.gov/api/v1"
+        }
+      ]
+      title: "Federal Register API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
