@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/federal-register-sdk/core"
+	"github.com/voxgig-sdk/federal-register-sdk/go/core"
 )
 
 type BaseFeature struct {

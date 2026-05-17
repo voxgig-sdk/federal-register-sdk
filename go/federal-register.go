@@ -1,10 +1,10 @@
 package voxgigfederalregistersdk
 
 import (
-	"github.com/voxgig-sdk/federal-register-sdk/core"
-	"github.com/voxgig-sdk/federal-register-sdk/entity"
-	"github.com/voxgig-sdk/federal-register-sdk/feature"
-	_ "github.com/voxgig-sdk/federal-register-sdk/utility"
+	"github.com/voxgig-sdk/federal-register-sdk/go/core"
+	"github.com/voxgig-sdk/federal-register-sdk/go/entity"
+	"github.com/voxgig-sdk/federal-register-sdk/go/feature"
+	_ "github.com/voxgig-sdk/federal-register-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

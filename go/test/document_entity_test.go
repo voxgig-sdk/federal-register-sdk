@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/federal-register-sdk"
-	"github.com/voxgig-sdk/federal-register-sdk/core"
+	sdk "github.com/voxgig-sdk/federal-register-sdk/go"
+	"github.com/voxgig-sdk/federal-register-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/federal-register-sdk/go/utility/struct"
 )
 
 func TestDocumentEntity(t *testing.T) {

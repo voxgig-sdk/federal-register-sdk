@@ -15,7 +15,8 @@
         "signing_date": "s96",
         "title": "s97",
         "topic": [],
-        "type": "s99"
+        "type": "s99",
+        "id": "DOCUMENT00"
       },
       "DOCUMENT01": {
         "abstract": "s118",
@@ -31,7 +32,8 @@
         "signing_date": "s122",
         "title": "s123",
         "topic": [],
-        "type": "s125"
+        "type": "s125",
+        "id": "DOCUMENT01"
       },
       "DOCUMENT02": {
         "abstract": "s1a4",
@@ -47,7 +49,8 @@
         "signing_date": "s1ae",
         "title": "s1af",
         "topic": [],
-        "type": "s1b1"
+        "type": "s1b1",
+        "id": "DOCUMENT02"
       }
     }
   },
