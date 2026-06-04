@@ -115,14 +115,12 @@ function document_direct_setup(mockres)
   local env = runner.env_override({
     ["FEDERALREGISTER_TEST_DOCUMENT_ENTID"] = {},
     ["FEDERALREGISTER_TEST_LIVE"] = "FALSE",
-    ["FEDERALREGISTER_APIKEY"] = "NONE",
   })
 
   local live = env["FEDERALREGISTER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["FEDERALREGISTER_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

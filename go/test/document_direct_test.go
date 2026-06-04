@@ -175,14 +175,12 @@ func documentDirectSetup(mockres any) *documentDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FEDERALREGISTER_TEST_DOCUMENT_ENTID": map[string]any{},
 		"FEDERALREGISTER_TEST_LIVE":    "FALSE",
-		"FEDERALREGISTER_APIKEY":       "NONE",
 	})
 
 	live := env["FEDERALREGISTER_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FEDERALREGISTER_APIKEY"],
 		}
 		client := sdk.NewFederalRegisterSDK(mergedOpts)
 

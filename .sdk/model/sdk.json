@@ -17,7 +17,17 @@
           }
         ],
         "title": "Federal Register API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Search and fetch documents from the daily journal of the US federal government",
+        "homepage": "https://www.federalregister.gov/",
+        "docs_url": "https://www.federalregister.gov/developers/documentation/api/v1",
+        "license_short": "US federal government work, public domain (no API key required)",
+        "license_md": "- Content produced by the US federal government is generally in the public domain under 17 U.S.C. § 105\n- No API key or authentication required\n- Attribution to the Federal Register / federalregister.gov is courteous but not legally required\n- Third-party material that may appear in documents (logos, images) can retain its own rights",
+        "about_md": "The [Federal Register API](https://www.federalregister.gov/developers/documentation/api/v1) provides programmatic access to the daily journal of the US federal government, run by the [Office of the Federal Register](https://www.archives.gov/federal-register) at the National Archives and Records Administration. It exposes the same content that powers [federalregister.gov](https://www.federalregister.gov/), including rules, proposed rules, notices, and presidential documents.\n\nWhat you get from the API:\n\n- Individual documents by Federal Register document number\n- Full-text and faceted search across the document corpus\n- JSON and CSV response formats\n- Document metadata such as agency, publication date, type, and citation\n\nThe API is served from `https://www.federalregister.gov/api/v1` and requires no API key. Useful for compliance monitoring, regulatory research, civic-tech tools, and journalism.",
+        "entity_desc": {
+          "document": "A single Federal Register publication — rule, proposed rule, notice, or presidential document — available at `GET /api/v1/documents` (list/search) and `GET /api/v1/documents/{document_number}` (single record)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "document": {

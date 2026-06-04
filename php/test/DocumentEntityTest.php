@@ -92,7 +92,6 @@ function document_basic_setup($extra)
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID" => $idmap,
         "FEDERALREGISTER_TEST_LIVE" => "FALSE",
         "FEDERALREGISTER_TEST_EXPLAIN" => "FALSE",
-        "FEDERALREGISTER_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +103,6 @@ function document_basic_setup($extra)
     if ($env["FEDERALREGISTER_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FEDERALREGISTER_APIKEY"],
             ],
             $extra ?? [],
         ]);
