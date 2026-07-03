@@ -10,13 +10,13 @@ The Ruby SDK for the FederalRegister API — an entity-oriented client using idi
 
 ## Install
 ```bash
-gem install federal-register-sdk
+gem install voxgig-sdk-federal-register
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "federal-register-sdk"
+gem "voxgig-sdk-federal-register"
 ```
 
 Then run:

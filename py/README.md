@@ -10,7 +10,7 @@ The Python SDK for the FederalRegister API — an entity-oriented client followi
 
 ## Install
 ```bash
-pip install federal-register-sdk
+pip install voxgig-sdk-federal-register
 ```
 
 Or install from source:

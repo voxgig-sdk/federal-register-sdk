@@ -10,7 +10,7 @@ The TypeScript SDK for the FederalRegister API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install federal-register
+npm install @voxgig-sdk/federal-register
 ```
 ## Tutorial: your first API call
 

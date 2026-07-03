@@ -10,7 +10,7 @@ The PHP SDK for the FederalRegister API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/federal-register-sdk
+composer require voxgig-sdk/federal-register
 ```
 
 
