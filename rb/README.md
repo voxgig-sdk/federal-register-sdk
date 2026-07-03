@@ -1,6 +1,11 @@
 # FederalRegister Ruby SDK
 
-The Ruby SDK for the FederalRegister API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the FederalRegister API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,13 +36,15 @@ loading a specific record.
 ```ruby
 require_relative "FederalRegister_sdk"
 
-client = FederalRegisterSDK.new({})
+client = FederalRegisterSDK.new({
+  "apikey" => ENV["FEDERAL-REGISTER_APIKEY"],
+})
 ```
 
 ### 2. List documents
 
 ```ruby
-result, err = client.Document(nil).list(nil, nil)
+result, err = client.Document().list
 raise err if err
 
 if result.is_a?(Array)
@@ -51,7 +58,7 @@ end
 ### 3. Load a document
 
 ```ruby
-result, err = client.Document(nil).load({ "id" => "example_id" }, nil)
+result, err = client.Document().load({ "id" => "example_id" })
 raise err if err
 puts result
 ```
@@ -97,11 +104,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = FederalRegisterSDK.test(nil, nil)
+client = FederalRegisterSDK.test
 
-result, err = client.FederalRegister(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.FederalRegister().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -133,6 +138,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FEDERAL-REGISTER_TEST_LIVE=TRUE
+FEDERAL-REGISTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -155,6 +161,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

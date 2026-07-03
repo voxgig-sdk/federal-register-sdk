@@ -114,6 +114,7 @@ function basicSetup(extra?: any) {
     'FEDERAL_REGISTER_TEST_DOCUMENT_ENTID': idmap,
     'FEDERAL_REGISTER_TEST_LIVE': 'FALSE',
     'FEDERAL_REGISTER_TEST_EXPLAIN': 'FALSE',
+    'FEDERAL_REGISTER_APIKEY': 'NONE',
   })
 
   idmap = env['FEDERAL_REGISTER_TEST_DOCUMENT_ENTID']
@@ -123,6 +124,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FederalRegisterSDK(merge([
       {
+        apikey: env.FEDERAL_REGISTER_APIKEY,
       },
       extra
     ]))

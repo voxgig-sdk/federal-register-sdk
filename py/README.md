@@ -1,6 +1,11 @@
 # FederalRegister Python SDK
 
-The Python SDK for the FederalRegister API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the FederalRegister API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from federalregister_sdk import FederalRegisterSDK
 
-client = FederalRegisterSDK({})
+client = FederalRegisterSDK({
+    "apikey": os.environ.get("FEDERAL-REGISTER_APIKEY"),
+})
 ```
 
 ### 2. List documents
 
 ```python
-result, err = client.Document(None).list(None, None)
+result, err = client.Document().list()
 if err:
     raise Exception(err)
 
@@ -44,7 +52,7 @@ if isinstance(result, list):
 ### 3. Load a document
 
 ```python
-result, err = client.Document(None).load({"id": "example_id"}, None)
+result, err = client.Document().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -92,11 +100,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = FederalRegisterSDK.test(None, None)
+client = FederalRegisterSDK.test()
 
-result, err = client.FederalRegister(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.FederalRegister().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -127,6 +133,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FEDERAL-REGISTER_TEST_LIVE=TRUE
+FEDERAL-REGISTER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,6 +157,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

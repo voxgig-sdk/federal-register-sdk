@@ -121,12 +121,14 @@ function document_direct_setup($mockres)
     $env = Runner::env_override([
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID" => [],
         "FEDERALREGISTER_TEST_LIVE" => "FALSE",
+        "FEDERALREGISTER_APIKEY" => "NONE",
     ]);
 
     $live = $env["FEDERALREGISTER_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["FEDERALREGISTER_APIKEY"],
         ];
         $client = new FederalRegisterSDK($merged_opts);
         return [

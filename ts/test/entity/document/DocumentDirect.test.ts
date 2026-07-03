@@ -117,12 +117,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FEDERALREGISTER_TEST_DOCUMENT_ENTID': {},
     'FEDERALREGISTER_TEST_LIVE': 'FALSE',
+    'FEDERALREGISTER_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FEDERALREGISTER_TEST_LIVE
 
   if (live) {
     const client = new FederalRegisterSDK({
+      apikey: env.FEDERALREGISTER_APIKEY,
     })
 
     let idmap: any = env['FEDERALREGISTER_TEST_DOCUMENT_ENTID']

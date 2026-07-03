@@ -106,12 +106,14 @@ def _document_direct_setup(mockres):
     env = runner.env_override({
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID": {},
         "FEDERALREGISTER_TEST_LIVE": "FALSE",
+        "FEDERALREGISTER_APIKEY": "NONE",
     })
 
     live = env.get("FEDERALREGISTER_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("FEDERALREGISTER_APIKEY"),
         }
         client = FederalRegisterSDK(merged_opts)
         return {

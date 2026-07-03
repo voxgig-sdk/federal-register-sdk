@@ -98,6 +98,7 @@ def _document_basic_setup(extra):
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID": idmap,
         "FEDERALREGISTER_TEST_LIVE": "FALSE",
         "FEDERALREGISTER_TEST_EXPLAIN": "FALSE",
+        "FEDERALREGISTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -108,6 +109,7 @@ def _document_basic_setup(extra):
     if env.get("FEDERALREGISTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("FEDERALREGISTER_APIKEY"),
             },
             extra or {},
         ])

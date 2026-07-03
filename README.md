@@ -1,21 +1,8 @@
 # FederalRegister SDK
 
-Search and fetch documents from the daily journal of the US federal government
+Federal Register API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Federal Register API
-
-The [Federal Register API](https://www.federalregister.gov/developers/documentation/api/v1) provides programmatic access to the daily journal of the US federal government, run by the [Office of the Federal Register](https://www.archives.gov/federal-register) at the National Archives and Records Administration. It exposes the same content that powers [federalregister.gov](https://www.federalregister.gov/), including rules, proposed rules, notices, and presidential documents.
-
-What you get from the API:
-
-- Individual documents by Federal Register document number
-- Full-text and faceted search across the document corpus
-- JSON and CSV response formats
-- Document metadata such as agency, publication date, type, and citation
-
-The API is served from `https://www.federalregister.gov/api/v1` and requires no API key. Useful for compliance monitoring, regulatory research, civic-tech tools, and journalism.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install federal-register-sdk
 luarocks install federal-register-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FederalRegisterSDK } from 'federal-register'
 
-const client = new FederalRegisterSDK({})
+const client = new FederalRegisterSDK({
+  apikey: process.env.FEDERAL-REGISTER_APIKEY,
+})
 
 // List all documents
 const documents = await client.Document().list()
+console.log(documents.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Document** | A single Federal Register publication — rule, proposed rule, notice, or presidential document — available at `GET /api/v1/documents` (list/search) and `GET /api/v1/documents/{document_number}` (single record). | `/documents` |
+| **Document** |  | `/documents` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from federalregister_sdk import FederalRegisterSDK
 
-client = FederalRegisterSDK({})
+client = FederalRegisterSDK({
+    "apikey": os.environ.get("FEDERAL-REGISTER_APIKEY"),
+})
 
 # List all documents
-documents, err = client.Document(None).list(None, None)
+documents, err = client.Document().list()
+print(documents)
 
 # Load a specific document
-document, err = client.Document(None).load(
-    {"id": "example_id"}, None
-)
+document, err = client.Document().load({"id": "example_id"})
+print(document)
 ```
 
 ### PHP
@@ -130,15 +122,17 @@ document, err = client.Document(None).load(
 <?php
 require_once 'federalregister_sdk.php';
 
-$client = new FederalRegisterSDK([]);
+$client = new FederalRegisterSDK([
+    "apikey" => getenv("FEDERAL-REGISTER_APIKEY"),
+]);
 
 // List all documents
-[$documents, $err] = $client->Document(null)->list(null, null);
+[$documents, $err] = $client->Document()->list();
+print_r($documents);
 
 // Load a specific document
-[$document, $err] = $client->Document(null)->load(
-    ["id" => "example_id"], null
-);
+[$document, $err] = $client->Document()->load(["id" => "example_id"]);
+print_r($document);
 ```
 
 ### Golang
@@ -146,10 +140,13 @@ $client = new FederalRegisterSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/federal-register-sdk/go"
 
-client := sdk.NewFederalRegisterSDK(map[string]any{})
+client := sdk.NewFederalRegisterSDK(map[string]any{
+    "apikey": os.Getenv("FEDERAL-REGISTER_APIKEY"),
+})
 
 // List all documents
 documents, err := client.Document(nil).List(nil, nil)
+fmt.Println(documents)
 ```
 
 ### Ruby
@@ -157,15 +154,17 @@ documents, err := client.Document(nil).List(nil, nil)
 ```ruby
 require_relative "FederalRegister_sdk"
 
-client = FederalRegisterSDK.new({})
+client = FederalRegisterSDK.new({
+  "apikey" => ENV["FEDERAL-REGISTER_APIKEY"],
+})
 
 # List all documents
-documents, err = client.Document(nil).list(nil, nil)
+documents, err = client.Document().list
+puts documents
 
 # Load a specific document
-document, err = client.Document(nil).load(
-  { "id" => "example_id" }, nil
-)
+document, err = client.Document().load({ "id" => "example_id" })
+puts document
 ```
 
 ### Lua
@@ -173,15 +172,17 @@ document, err = client.Document(nil).load(
 ```lua
 local sdk = require("federal-register_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FEDERAL-REGISTER_APIKEY"),
+})
 
 -- List all documents
-local documents, err = client:Document(nil):list(nil, nil)
+local documents, err = client:Document():list()
+print(documents)
 
 -- Load a specific document
-local document, err = client:Document(nil):load(
-  { id = "example_id" }, nil
-)
+local document, err = client:Document():load({ id = "example_id" })
+print(document)
 ```
 
 ## Unit testing in offline mode
@@ -200,25 +201,21 @@ const result = await client.Document().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FederalRegisterSDK.test(None, None)
-result, err = client.Document(None).load(
-    {"id": "test01"}, None
-)
+client = FederalRegisterSDK.test()
+result, err = client.Document().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FederalRegisterSDK::test(null, null);
-[$result, $err] = $client->Document(null)->load(
-    ["id" => "test01"], null
-);
+$client = FederalRegisterSDK::test();
+[$result, $err] = $client->Document()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Document(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -227,19 +224,15 @@ result, err := client.Document(nil).Load(
 ### Ruby
 
 ```ruby
-client = FederalRegisterSDK.test(nil, nil)
-result, err = client.Document(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FederalRegisterSDK.test
+result, err = client.Document().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Document(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Document():load({ id = "test01" })
 ```
 
 ## How it works
@@ -343,16 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Federal Register API
-
-- Upstream: [https://www.federalregister.gov/](https://www.federalregister.gov/)
-- API docs: [https://www.federalregister.gov/developers/documentation/api/v1](https://www.federalregister.gov/developers/documentation/api/v1)
-
-- Content produced by the US federal government is generally in the public domain under 17 U.S.C. § 105
-- No API key or authentication required
-- Attribution to the Federal Register / federalregister.gov is courteous but not legally required
-- Third-party material that may appear in documents (logos, images) can retain its own rights
 
 ---
 
