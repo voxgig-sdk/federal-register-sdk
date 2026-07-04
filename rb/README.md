@@ -28,16 +28,14 @@ require_relative "FederalRegister_sdk"
 client = FederalRegisterSDK.new
 ```
 
-### 2. List documents
+### 2. List document records
 
 ```ruby
 begin
-  result = client.document.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Document records — iterate directly.
+  documents = client.Document.list
+  documents.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.document.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Document record (raises on error).
+  document = client.Document.load({ "id" => "example_id" })
+  puts document
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FederalRegisterSDK.test
+client = FederalRegisterSDK.test({
+  "entity" => { "document" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.document.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+document = client.Document.load({ "id" => "test01" })
+puts document
 ```
 
 ### Use a custom fetch function
@@ -247,7 +250,7 @@ API path: `/documents`
 
 ### Document
 
-Create an instance: `const document = client.document`
+Create an instance: `document = client.Document`
 
 #### Operations
 
@@ -277,14 +280,16 @@ Create an instance: `const document = client.document`
 
 #### Example: Load
 
-```ts
-const document = await client.document.load({ id: 'document_id' })
+```ruby
+# load returns the bare Document record (raises on error).
+document = client.Document.load({ "id" => "document_id" })
 ```
 
 #### Example: List
 
-```ts
-const documents = await client.document.list()
+```ruby
+# list returns an Array of Document records (raises on error).
+documents = client.Document.list
 ```
 
 
@@ -359,7 +364,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-document = client.document
+document = client.Document
 document.load({ "id" => "example_id" })
 
 # document.data_get now returns the loaded document data

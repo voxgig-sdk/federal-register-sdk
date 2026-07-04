@@ -204,14 +204,7 @@ class FederalRegisterSDK {
 
 
 
-  _document?: DocumentEntity
-
-  // Idiomatic facade: `client.document.list()` / `client.document.load({ id })`.
-  get document(): DocumentEntity {
-    return (this._document ??= new DocumentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.document` instead. */
+  // Entity access: `client.Document().list()` / `client.Document().load({ id })`.
   Document(data?: any) {
     const self = this
     return new DocumentEntity(self,data)

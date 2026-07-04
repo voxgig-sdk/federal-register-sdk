@@ -109,7 +109,7 @@ Alias for `FederalRegisterSDK.test()`.
 ## DocumentEntity
 
 ```ts
-const document = client.document
+const document = client.Document()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const document = client.document
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.document.list()
+const results = await client.Document().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -146,7 +146,7 @@ const results = await client.document.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.document.load({ id: 'document_id' })
+const result = await client.Document().load({ id: 'document_id' })
 ```
 
 ### Common Methods

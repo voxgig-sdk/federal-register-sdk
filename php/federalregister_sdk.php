@@ -233,10 +233,10 @@ class FederalRegisterSDK
 
     private $_document = null;
 
-    // Idiomatic facade: $client->document()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Document() (PHP method
-    // names are case-insensitive).
-    public function document($data = null)
+    // Canonical facade: $client->Document()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->document()
+    // resolves here too.
+    public function Document($data = null)
     {
         require_once __DIR__ . '/entity/document_entity.php';
         if ($data === null) {

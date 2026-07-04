@@ -29,18 +29,16 @@ require_once 'federalregister_sdk.php';
 $client = new FederalRegisterSDK();
 ```
 
-### 2. List documents
+### 2. List document records
 
 ```php
 try {
-    $result = $client->document()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Document records — iterate directly.
+    $documents = $client->Document()->list();
+    foreach ($documents as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->document()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Document record (throws on error).
+    $document = $client->Document()->load(["id" => "example_id"]);
+    print_r($document);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FederalRegisterSDK::test();
+$client = FederalRegisterSDK::test([
+    "entity" => ["document" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->document()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$document = $client->Document()->load(["id" => "test01"]);
+print_r($document);
 ```
 
 ### Use a custom fetch function
@@ -252,7 +255,7 @@ API path: `/documents`
 
 ### Document
 
-Create an instance: `const document = client.document`
+Create an instance: `$document = $client->Document();`
 
 #### Operations
 
@@ -282,14 +285,16 @@ Create an instance: `const document = client.document`
 
 #### Example: Load
 
-```ts
-const document = await client.document.load({ id: 'document_id' })
+```php
+// load() returns the bare Document record (throws on error).
+$document = $client->Document()->load(["id" => "document_id"]);
 ```
 
 #### Example: List
 
-```ts
-const documents = await client.document.list()
+```php
+// list() returns an array of Document records (throws on error).
+$documents = $client->Document()->list();
 ```
 
 
@@ -364,7 +369,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$document = $client->document();
+$document = $client->Document();
 $document->load(["id" => "example_id"]);
 
 // $document->dataGet() now returns the loaded document data

@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## DocumentEntity
 
 ```lua
-local document = client:document(nil)
+local document = client:Document(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local document = client:document(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:document():list()
+local results, err = client:Document():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -120,7 +120,7 @@ local results, err = client:document():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:document():load({ id = "document_id" })
+local result, err = client:Document():load({ id = "document_id" })
 ```
 
 ### Common Methods

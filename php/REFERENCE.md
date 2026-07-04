@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DocumentEntity
 
 ```php
-$document = $client->document();
+$document = $client->Document();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $document = $client->document();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->document()->list([]);
+$results = $client->Document()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -122,7 +122,7 @@ $results = $client->document()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->document()->load(["id" => "document_id"]);
+$result = $client->Document()->load(["id" => "document_id"]);
 ```
 
 ### Common Methods

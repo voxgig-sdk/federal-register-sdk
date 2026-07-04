@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DocumentEntity
 
 ```python
-document = client.document
+document = client.Document()
 ```
 
 ### Fields
@@ -109,7 +109,9 @@ document = client.document
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.document.list({})
+results = client.Document().list({})
+for document in results:
+    print(document)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -117,7 +119,7 @@ results = client.document.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.document.load({"id": "document_id"})
+result = client.Document().load({"id": "document_id"})
 ```
 
 ### Common Methods

@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/federal-register-sdk/go=../federal-re
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/federal-register-sdk/go"
-    "github.com/voxgig-sdk/federal-register-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List documents
-
-```go
-    result, err := client.Document(nil).List(nil, nil)
+    // List document records — the value is the array of records itself.
+    documents, err := client.Document(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range documents.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a document
-
-```go
-    result, err = client.Document(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single document — the value is the loaded record.
+    document, err := client.Document(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(document)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Document(nil).Load(
+document, err := client.Document(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(document) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -227,17 +216,24 @@ All entities implement the `FederalRegisterEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    document, err := client.Document(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // document is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -302,13 +298,21 @@ Create an instance: `document := client.Document(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Document(nil).Load(map[string]any{"id": "document_id"}, nil)
+document, err := client.Document(nil).Load(map[string]any{"id": "document_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(document) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Document(nil).List(nil, nil)
+documents, err := client.Document(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(documents) // the array of records
 ```
 
 

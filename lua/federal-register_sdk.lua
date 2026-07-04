@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:document():list() / client:document():load({ id = ... })
-function FederalRegisterSDK:document(data)
+-- Idiomatic facade: client:Document():list() / client:Document():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FederalRegisterSDK:Document(data)
   local EntityMod = require("entity.document_entity")
   if data == nil then
     if self._document == nil then
@@ -253,12 +254,6 @@ function FederalRegisterSDK:document(data)
     end
     return self._document
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:document() instead.
-function FederalRegisterSDK:Document(data)
-  local EntityMod = require("entity.document_entity")
   return EntityMod.new(self, data)
 end
 

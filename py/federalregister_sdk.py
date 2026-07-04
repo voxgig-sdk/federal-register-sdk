@@ -220,25 +220,15 @@ class FederalRegisterSDK:
         }
 
 
-    @property
-    def document(self):
-        """Idiomatic facade: client.document.list() / client.document.load({"id": ...})."""
-        from entity.document_entity import DocumentEntity
-        cached = getattr(self, "_document", None)
-        if cached is None:
-            cached = DocumentEntity(self, None)
-            self._document = cached
-        return cached
-
-    def Document(self, data=None):
-        # Deprecated: use client.document instead.
+    def Document(self, data=None) -> "DocumentEntity":
+        """Entity factory: client.Document().list({}) / client.Document().load({"id": ...})."""
         from entity.document_entity import DocumentEntity
         return DocumentEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FederalRegisterSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class FederalRegisterSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.document_entity import DocumentEntity

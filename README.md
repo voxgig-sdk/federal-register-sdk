@@ -26,9 +26,11 @@ import { FederalRegisterSDK } from '@voxgig-sdk/federal-register'
 
 const client = new FederalRegisterSDK()
 
-// List all documents
-const documents = await client.document.list()
-console.log(documents.data)
+// List all documents (returns Document[])
+const documents = await client.Document().list()
+for (const document of documents) {
+  console.log(document)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,12 +85,13 @@ from federalregister_sdk import FederalRegisterSDK
 
 client = FederalRegisterSDK()
 
-# List all documents
-documents = client.document.list()
-print(documents)
+# List all documents (returns a list, raises on error)
+documents = client.Document().list({})
+for document in documents:
+    print(document)
 
-# Load a specific document
-document = client.document.load({"id": "example_id"})
+# Load a specific document (returns the record, raises on error)
+document = client.Document().load({"id": "example_id"})
 print(document)
 ```
 
@@ -100,12 +103,12 @@ require_once 'federalregister_sdk.php';
 
 $client = new FederalRegisterSDK();
 
-// List all documents (throws on error)
-$documents = $client->document()->list();
+// List all documents (returns an array; throws on error)
+$documents = $client->Document()->list();
 print_r($documents);
 
-// Load a specific document
-$document = $client->document()->load(["id" => "example_id"]);
+// Load a specific document (returns the bare record; throws on error)
+$document = $client->Document()->load(["id" => "example_id"]);
 print_r($document);
 ```
 
@@ -128,12 +131,12 @@ require_relative "FederalRegister_sdk"
 
 client = FederalRegisterSDK.new
 
-# List all documents
-documents = client.document.list
+# List all documents (returns an Array; raises on error)
+documents = client.Document.list
 puts documents
 
-# Load a specific document
-document = client.document.load({ "id" => "example_id" })
+# Load a specific document (returns the bare record; raises on error)
+document = client.Document.load({ "id" => "example_id" })
 puts document
 ```
 
@@ -145,11 +148,11 @@ local sdk = require("federal-register_sdk")
 local client = sdk.new()
 
 -- List all documents
-local documents, err = client:document():list()
+local documents, err = client:Document():list()
 print(documents)
 
 -- Load a specific document
-local document, err = client:document():load({ id = "example_id" })
+local document, err = client:Document():load({ id = "example_id" })
 print(document)
 ```
 
@@ -162,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = FederalRegisterSDK.test()
-const result = await client.document.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const document = await client.Document().load({ id: 'test01' })
+// document is a bare Document populated with mock data
+console.log(document)
 ```
 
 ### Python
 
 ```python
 client = FederalRegisterSDK.test()
-result = client.document.load({"id": "test01"})
+document = client.Document().load({"id": "test01"})
+print(document)
 ```
 
 ### PHP
 
 ```php
-$client = FederalRegisterSDK::test();
-$result = $client->document()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = FederalRegisterSDK::test([
+    "entity" => ["document" => ["test01" => ["id" => "test01"]]],
+]);
+$document = $client->Document()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -192,15 +200,18 @@ result, err := client.Document(nil).Load(
 ### Ruby
 
 ```ruby
-client = FederalRegisterSDK.test
-result = client.document.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = FederalRegisterSDK.test({
+  "entity" => { "document" => { "test01" => { "id" => "test01" } } },
+})
+document = client.Document.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:document():load({ id = "test01" })
+local result, err = client:Document():load({ id = "test01" })
 ```
 
 ## How it works
@@ -248,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

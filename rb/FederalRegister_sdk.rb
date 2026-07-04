@@ -208,13 +208,7 @@ class FederalRegisterSDK
   end
 
 
-  # Idiomatic facade: client.document.list / client.document.load({ "id" => ... })
-  def document
-    require_relative 'entity/document_entity'
-    @document ||= DocumentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.document instead.
+  # Canonical facade: client.Document.list / client.Document.load({ "id" => ... })
   def Document(data = nil)
     require_relative 'entity/document_entity'
     DocumentEntity.new(self, data)

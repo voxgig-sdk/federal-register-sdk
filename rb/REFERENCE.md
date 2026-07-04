@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## DocumentEntity
 
 ```ruby
-document = client.document
+document = client.Document
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ document = client.document
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.document.list(nil)
+results = client.Document.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -123,7 +123,7 @@ results = client.document.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.document.load({ "id" => "document_id" })
+result = client.Document.load({ "id" => "document_id" })
 ```
 
 ### Common Methods

@@ -31,24 +31,28 @@ from federalregister_sdk import FederalRegisterSDK
 client = FederalRegisterSDK()
 ```
 
-### 2. List documents
+### 2. List document records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.document.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    documents = client.Document().list({})
+    for document in documents:
+        print(document)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a document
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.document.load({"id": "example_id"})
-    print(result)
+    document = client.Document().load({"id": "example_id"})
+    print(document)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FederalRegisterSDK.test()
 
-result = client.document.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+document = client.Document().load({"id": "test01"})
+# document contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -243,7 +248,7 @@ API path: `/documents`
 
 ### Document
 
-Create an instance: `const document = client.document`
+Create an instance: `document = client.Document()`
 
 #### Operations
 
@@ -273,14 +278,14 @@ Create an instance: `const document = client.document`
 
 #### Example: Load
 
-```ts
-const document = await client.document.load({ id: 'document_id' })
+```python
+document = client.Document().load({"id": "document_id"})
 ```
 
 #### Example: List
 
-```ts
-const documents = await client.document.list()
+```python
+documents = client.Document().list({})
 ```
 
 
@@ -354,7 +359,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-document = client.document
+document = client.Document()
 document.load({"id": "example_id"})
 
 # document.data_get() now returns the loaded document data
