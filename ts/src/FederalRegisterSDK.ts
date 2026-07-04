@@ -2,6 +2,8 @@
 
 import { DocumentEntity } from './entity/DocumentEntity'
 
+export type * from './FederalRegisterTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class FederalRegisterSDK {
 
 
 
+  _document?: DocumentEntity
+
+  // Idiomatic facade: `client.document.list()` / `client.document.load({ id })`.
+  get document(): DocumentEntity {
+    return (this._document ??= new DocumentEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.document` instead. */
   Document(data?: any) {
     const self = this
     return new DocumentEntity(self,data)

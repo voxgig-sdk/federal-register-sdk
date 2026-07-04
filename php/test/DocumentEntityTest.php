@@ -50,14 +50,12 @@ class DocumentEntityTest extends TestCase
         $document_ref01_ent = $client->Document(null);
         $document_ref01_match = [];
 
-        [$document_ref01_list_result, $err] = $document_ref01_ent->list($document_ref01_match, null);
-        $this->assertNull($err);
+        $document_ref01_list_result = $document_ref01_ent->list($document_ref01_match, null);
         $this->assertIsArray($document_ref01_list_result);
 
         // LOAD
         $document_ref01_match_dt0 = [];
-        [$document_ref01_data_dt0_loaded, $err] = $document_ref01_ent->load($document_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $document_ref01_data_dt0_loaded = $document_ref01_ent->load($document_ref01_match_dt0, null);
         $this->assertNotNull($document_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function document_basic_setup($extra)
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID" => $idmap,
         "FEDERALREGISTER_TEST_LIVE" => "FALSE",
         "FEDERALREGISTER_TEST_EXPLAIN" => "FALSE",
-        "FEDERALREGISTER_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function document_basic_setup($extra)
     if ($env["FEDERALREGISTER_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FEDERALREGISTER_APIKEY"],
             ],
             $extra ?? [],
         ]);

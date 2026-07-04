@@ -129,7 +129,6 @@ func documentBasicSetup(extra map[string]any) *entityTestSetup {
 		"FEDERALREGISTER_TEST_DOCUMENT_ENTID": idmap,
 		"FEDERALREGISTER_TEST_LIVE":      "FALSE",
 		"FEDERALREGISTER_TEST_EXPLAIN":   "FALSE",
-		"FEDERALREGISTER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FEDERALREGISTER_TEST_DOCUMENT_ENTID"])
@@ -140,7 +139,6 @@ func documentBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FEDERALREGISTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["FEDERALREGISTER_APIKEY"],
 			},
 			extra,
 		})

@@ -245,6 +245,9 @@ func (sdk *FederalRegisterSDK) Direct(fetchargs map[string]any) (map[string]any,
 }
 
 
+// Document returns a Document entity bound to this client.
+// Idiomatic usage: client.Document(nil).List(nil, nil) or
+// client.Document(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FederalRegisterSDK) Document(data map[string]any) FederalRegisterEntity {
 	return NewDocumentEntityFunc(sdk, data)
 }

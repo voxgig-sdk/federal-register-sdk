@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DocumentLoadMatch
+---@param ctrl? table
+---@return Document
+---@return string? err
 function DocumentEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch DocumentListMatch
+---@param ctrl? table
+---@return Document[]
+---@return string? err
 function DocumentEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

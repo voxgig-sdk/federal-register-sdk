@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Document,
+  DocumentLoadMatch,
+  DocumentListMatch,
+} from '../FederalRegisterTypes'
 
 // TODO: needs Entity superclass
-class DocumentEntity extends FederalRegisterEntityBase {
+class DocumentEntity extends FederalRegisterEntityBase<Document> {
 
   constructor(client: FederalRegisterSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class DocumentEntity extends FederalRegisterEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DocumentLoadMatch, ctrl?: Control): Promise<Document> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class DocumentEntity extends FederalRegisterEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Document> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DocumentListMatch, ctrl?: Control): Promise<Document[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class DocumentEntity extends FederalRegisterEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Document[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

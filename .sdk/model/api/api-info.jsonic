@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Federal Register API Documentation"
         url: "https://www.federalregister.gov/reader-aids/developer-resources/rest-api"

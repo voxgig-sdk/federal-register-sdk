@@ -20,9 +20,6 @@ class FederalRegisterConfig
             ],
             "options" => [
                 "base" => "https://www.federalregister.gov/api/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -296,6 +293,7 @@ class FederalRegisterConfig
                         'orig' => 'document_number',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [

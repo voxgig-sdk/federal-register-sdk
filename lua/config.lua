@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://www.federalregister.gov/api/v1",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -290,6 +287,7 @@ local function make_config()
                       ["orig"] = "document_number",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

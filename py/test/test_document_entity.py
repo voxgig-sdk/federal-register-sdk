@@ -50,14 +50,12 @@ class TestDocumentEntity:
         document_ref01_ent = client.Document(None)
         document_ref01_match = {}
 
-        document_ref01_list_result, err = document_ref01_ent.list(document_ref01_match, None)
-        assert err is None
+        document_ref01_list_result = document_ref01_ent.list(document_ref01_match, None)
         assert isinstance(document_ref01_list_result, list)
 
         # LOAD
         document_ref01_match_dt0 = {}
-        document_ref01_data_dt0_loaded, err = document_ref01_ent.load(document_ref01_match_dt0, None)
-        assert err is None
+        document_ref01_data_dt0_loaded = document_ref01_ent.load(document_ref01_match_dt0, None)
         assert document_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _document_basic_setup(extra):
         "FEDERALREGISTER_TEST_DOCUMENT_ENTID": idmap,
         "FEDERALREGISTER_TEST_LIVE": "FALSE",
         "FEDERALREGISTER_TEST_EXPLAIN": "FALSE",
-        "FEDERALREGISTER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _document_basic_setup(extra):
     if env.get("FEDERALREGISTER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FEDERALREGISTER_APIKEY"),
             },
             extra or {},
         ])

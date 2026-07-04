@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.federalregister.gov/api/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -320,7 +316,8 @@ class Config {
                     "name": "id",
                     "orig": "document_number",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

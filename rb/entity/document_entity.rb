@@ -45,6 +45,7 @@ class DocumentEntity
     end
   end
 
+  # @return [Document, Hash] the current Document data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DocumentEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Document fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Document.
+  #
+  # @param reqmatch [DocumentLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Document, Hash] the loaded Document; raises FederalRegisterError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class DocumentEntity
 
 
   
+  # List Document items matching the given filter.
+  #
+  # @param reqmatch [DocumentListMatch, Hash, nil] match filter (any subset of Document fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Document>, Array] the matching Document items; raises FederalRegisterError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
