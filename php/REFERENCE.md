@@ -8,7 +8,7 @@ Complete API reference for the FederalRegister PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/federal-register_sdk.php';
+require_once __DIR__ . '/federalregister_sdk.php';
 
 $client = new FederalRegisterSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = FederalRegisterSDK::test();
 
 Create a new `DocumentEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FederalRegisterUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,29 +92,29 @@ $document = $client->Document();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | ``$STRING`` | No |  |
-| `action` | ``$STRING`` | No |  |
-| `agency` | ``$ARRAY`` | No |  |
-| `body_html_url` | ``$STRING`` | No |  |
-| `citation` | ``$STRING`` | No |  |
-| `document_number` | ``$STRING`` | No |  |
-| `full_text_xml_url` | ``$STRING`` | No |  |
-| `html_url` | ``$STRING`` | No |  |
-| `pdf_url` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `signing_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `topic` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `abstract` | `string` | No |  |
+| `action` | `string` | No |  |
+| `agency` | `array` | No |  |
+| `body_html_url` | `string` | No |  |
+| `citation` | `string` | No |  |
+| `document_number` | `string` | No |  |
+| `full_text_xml_url` | `string` | No |  |
+| `html_url` | `string` | No |  |
+| `pdf_url` | `string` | No |  |
+| `publication_date` | `string` | No |  |
+| `signing_date` | `string` | No |  |
+| `title` | `string` | No |  |
+| `topic` | `array` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Document()->list([]);
+$results = $client->Document()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -127,19 +127,19 @@ $result = $client->Document()->load(["id" => "document_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -148,7 +148,7 @@ Set the entity match criteria.
 Create a new `DocumentEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -221,7 +221,7 @@ class FederalRegisterSDK:
 
 
     def Document(self, data=None) -> "DocumentEntity":
-        """Entity factory: client.Document().list({}) / client.Document().load({"id": ...})."""
+        """Entity factory: client.Document().list() / client.Document().load({"id": ...})."""
         from entity.document_entity import DocumentEntity
         return DocumentEntity(self, data)
 

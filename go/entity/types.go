@@ -31,8 +31,7 @@ type DocumentLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// DocumentListMatch mirrors the document fields as an all-optional match
-// filter (Go analog of Partial<Document>).
+// DocumentListMatch is the typed request payload for Document.ListTyped.
 type DocumentListMatch struct {
 	Abstract *string `json:"abstract,omitempty"`
 	Action *string `json:"action,omitempty"`

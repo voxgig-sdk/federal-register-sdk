@@ -78,7 +78,7 @@ DocumentLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Document#list (any subset of Document fields).
+# Request payload for Document#list.
 #
 # @!attribute [rw] abstract
 #   @return [String, nil]

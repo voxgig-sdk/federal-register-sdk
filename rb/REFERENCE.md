@@ -8,7 +8,7 @@ Complete API reference for the FederalRegister Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'federal-register_sdk'
+require_relative 'FederalRegister_sdk'
 
 client = FederalRegisterSDK.new(options)
 ```
@@ -93,29 +93,29 @@ document = client.Document
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | ``$STRING`` | No |  |
-| `action` | ``$STRING`` | No |  |
-| `agency` | ``$ARRAY`` | No |  |
-| `body_html_url` | ``$STRING`` | No |  |
-| `citation` | ``$STRING`` | No |  |
-| `document_number` | ``$STRING`` | No |  |
-| `full_text_xml_url` | ``$STRING`` | No |  |
-| `html_url` | ``$STRING`` | No |  |
-| `pdf_url` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `signing_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `topic` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `abstract` | `String` | No |  |
+| `action` | `String` | No |  |
+| `agency` | `Array` | No |  |
+| `body_html_url` | `String` | No |  |
+| `citation` | `String` | No |  |
+| `document_number` | `String` | No |  |
+| `full_text_xml_url` | `String` | No |  |
+| `html_url` | `String` | No |  |
+| `pdf_url` | `String` | No |  |
+| `publication_date` | `String` | No |  |
+| `signing_date` | `String` | No |  |
+| `title` | `String` | No |  |
+| `topic` | `Array` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Document.list(nil)
+results = client.Document.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

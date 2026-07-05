@@ -26,6 +26,20 @@
 ---@field id string
 
 ---@class DocumentListMatch
+---@field abstract? string
+---@field action? string
+---@field agency? table
+---@field body_html_url? string
+---@field citation? string
+---@field document_number? string
+---@field full_text_xml_url? string
+---@field html_url? string
+---@field pdf_url? string
+---@field publication_date? string
+---@field signing_date? string
+---@field title? string
+---@field topic? table
+---@field type? string
 
 local M = {}
 

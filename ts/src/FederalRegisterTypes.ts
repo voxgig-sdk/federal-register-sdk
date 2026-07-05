@@ -26,5 +26,20 @@ export interface DocumentLoadMatch {
   id: string
 }
 
-export type DocumentListMatch = Partial<Document>
+export interface DocumentListMatch {
+  abstract?: string
+  action?: string
+  agency?: any[]
+  body_html_url?: string
+  citation?: string
+  document_number?: string
+  full_text_xml_url?: string
+  html_url?: string
+  pdf_url?: string
+  publication_date?: string
+  signing_date?: string
+  title?: string
+  topic?: any[]
+  type?: string
+}
 

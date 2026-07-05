@@ -4,6 +4,8 @@
 
 The PHP SDK for the FederalRegister API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Document()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Document records — iterate directly.
     $documents = $client->Document()->list();
     foreach ($documents as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["abstract"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($document);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $documents = $client->Document()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = FederalRegisterSDK::test([
     "entity" => ["document" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$document = $client->Document()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$document = $client->Document()->list();
 print_r($document);
 ```
 
@@ -194,10 +230,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -268,20 +301,20 @@ Create an instance: `$document = $client->Document();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstract` | ``$STRING`` |  |
-| `action` | ``$STRING`` |  |
-| `agency` | ``$ARRAY`` |  |
-| `body_html_url` | ``$STRING`` |  |
-| `citation` | ``$STRING`` |  |
-| `document_number` | ``$STRING`` |  |
-| `full_text_xml_url` | ``$STRING`` |  |
-| `html_url` | ``$STRING`` |  |
-| `pdf_url` | ``$STRING`` |  |
-| `publication_date` | ``$STRING`` |  |
-| `signing_date` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `topic` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `abstract` | `string` |  |
+| `action` | `string` |  |
+| `agency` | `array` |  |
+| `body_html_url` | `string` |  |
+| `citation` | `string` |  |
+| `document_number` | `string` |  |
+| `full_text_xml_url` | `string` |  |
+| `html_url` | `string` |  |
+| `pdf_url` | `string` |  |
+| `publication_date` | `string` |  |
+| `signing_date` | `string` |  |
+| `title` | `string` |  |
+| `topic` | `array` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -298,12 +331,16 @@ $documents = $client->Document()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -320,8 +357,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -365,15 +403,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $document = $client->Document();
-$document->load(["id" => "example_id"]);
+$document->list();
 
-// $document->dataGet() now returns the loaded document data
-// $document->matchGet() returns the last match criteria
+// $document->data_get() now returns the document data from the last list
+// $document->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

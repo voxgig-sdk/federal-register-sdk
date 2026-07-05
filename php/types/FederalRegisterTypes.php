@@ -37,7 +37,7 @@ class DocumentLoadMatch
     public string $id;
 }
 
-/** Match filter for Document#list (any subset of Document fields). */
+/** Request payload for Document#list. */
 class DocumentListMatch
 {
     public ?string $abstract = null;

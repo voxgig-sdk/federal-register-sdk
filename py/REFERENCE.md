@@ -8,7 +8,7 @@ Complete API reference for the FederalRegister Python SDK.
 ### Constructor
 
 ```python
-from federal-register_sdk import FederalRegisterSDK
+from federalregister_sdk import FederalRegisterSDK
 
 client = FederalRegisterSDK(options)
 ```
@@ -87,29 +87,29 @@ document = client.Document()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | ``$STRING`` | No |  |
-| `action` | ``$STRING`` | No |  |
-| `agency` | ``$ARRAY`` | No |  |
-| `body_html_url` | ``$STRING`` | No |  |
-| `citation` | ``$STRING`` | No |  |
-| `document_number` | ``$STRING`` | No |  |
-| `full_text_xml_url` | ``$STRING`` | No |  |
-| `html_url` | ``$STRING`` | No |  |
-| `pdf_url` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `signing_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `topic` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `abstract` | `str` | No |  |
+| `action` | `str` | No |  |
+| `agency` | `list` | No |  |
+| `body_html_url` | `str` | No |  |
+| `citation` | `str` | No |  |
+| `document_number` | `str` | No |  |
+| `full_text_xml_url` | `str` | No |  |
+| `html_url` | `str` | No |  |
+| `pdf_url` | `str` | No |  |
+| `publication_date` | `str` | No |  |
+| `signing_date` | `str` | No |  |
+| `title` | `str` | No |  |
+| `topic` | `list` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Document().list({})
+results = client.Document().list()
 for document in results:
     print(document)
 ```

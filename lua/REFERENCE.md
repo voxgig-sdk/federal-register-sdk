@@ -90,20 +90,20 @@ local document = client:Document(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | ``$STRING`` | No |  |
-| `action` | ``$STRING`` | No |  |
-| `agency` | ``$ARRAY`` | No |  |
-| `body_html_url` | ``$STRING`` | No |  |
-| `citation` | ``$STRING`` | No |  |
-| `document_number` | ``$STRING`` | No |  |
-| `full_text_xml_url` | ``$STRING`` | No |  |
-| `html_url` | ``$STRING`` | No |  |
-| `pdf_url` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `signing_date` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `topic` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `abstract` | `string` | No |  |
+| `action` | `string` | No |  |
+| `agency` | `table` | No |  |
+| `body_html_url` | `string` | No |  |
+| `citation` | `string` | No |  |
+| `document_number` | `string` | No |  |
+| `full_text_xml_url` | `string` | No |  |
+| `html_url` | `string` | No |  |
+| `pdf_url` | `string` | No |  |
+| `publication_date` | `string` | No |  |
+| `signing_date` | `string` | No |  |
+| `title` | `string` | No |  |
+| `topic` | `table` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
