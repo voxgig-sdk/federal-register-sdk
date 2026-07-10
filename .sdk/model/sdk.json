@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -469,14 +466,17 @@
           "url": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api"
         },
         "description": "The Federal Register API provides access to data from the Federal Register, allowing users to fetch single or multiple documents, perform searches, and access metadata associated with these documents. This API returns data in both CSV and JSON formats, and no API keys are required for use.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Federal Register API Server",
             "url": "https://www.federalregister.gov/api/v1"
           }
         ],
+        "summary": "The Federal Register API provides access to data from the Federal Register, allowing users to fetch single or multiple documents, perform searches, and access metadata associated with these documents.",
         "title": "Federal Register API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://federalregister.gov"
       },
       "option": {},
       "target": {
@@ -529,6 +529,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -579,6 +582,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

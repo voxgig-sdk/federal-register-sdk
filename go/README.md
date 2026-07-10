@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single document — the value is the loaded record.
-    document, err := client.Document(nil).Load(map[string]any{"id": "example"}, nil)
+    document, err := client.Document(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

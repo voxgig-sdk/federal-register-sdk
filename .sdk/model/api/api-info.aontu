@@ -16,9 +16,9 @@ main: {
           url: "https://www.federalregister.gov/api/v1"
         }
       ]
+      summary: "The Federal Register API provides access to data from the Federal Register, allowing users to fetch single or multiple documents, perform searches, and access metadata associated with these documents."
       title: "Federal Register API"
       version: "1.0.0"
+      website: "https://federalregister.gov"
     }
   }
-}
-
