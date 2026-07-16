@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewFederalRegisterSDK(nil)
+	// Configure from the environment: FEDERAL_REGISTER_APIKEY carries the API key and
+	// FEDERAL_REGISTER_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("FEDERAL_REGISTER_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("FEDERAL_REGISTER_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewFederalRegisterSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "federal-register",
