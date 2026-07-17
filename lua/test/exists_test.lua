@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FederalRegister SDK exists test
 
 local sdk = require("federal-register_sdk")
 
