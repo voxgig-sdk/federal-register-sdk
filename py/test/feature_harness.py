@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import FederalRegisterControl
-from core.error import FederalRegisterError
-from core.result import FederalRegisterResult
-from core.spec import FederalRegisterSpec
+from federalregister_sdk.config import make_config
+from federalregister_sdk.features import _make_feature
+from federalregister_sdk.core.control import FederalRegisterControl
+from federalregister_sdk.core.error import FederalRegisterError
+from federalregister_sdk.core.result import FederalRegisterResult
+from federalregister_sdk.core.spec import FederalRegisterSpec
 
 
 # True when this SDK was generated with the named feature.

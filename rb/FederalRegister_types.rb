@@ -16,7 +16,7 @@
 # @!attribute [rw] action
 #   @return [String, nil]
 #
-# @!attribute [rw] agency
+# @!attribute [rw] agencies
 #   @return [Array, nil]
 #
 # @!attribute [rw] body_html_url
@@ -46,7 +46,7 @@
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] topic
+# @!attribute [rw] topics
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
@@ -54,7 +54,7 @@
 Document = Struct.new(
   :abstract,
   :action,
-  :agency,
+  :agencies,
   :body_html_url,
   :citation,
   :document_number,
@@ -64,7 +64,7 @@ Document = Struct.new(
   :publication_date,
   :signing_date,
   :title,
-  :topic,
+  :topics,
   :type,
   keyword_init: true
 )
@@ -86,7 +86,7 @@ DocumentLoadMatch = Struct.new(
 # @!attribute [rw] action
 #   @return [String, nil]
 #
-# @!attribute [rw] agency
+# @!attribute [rw] agencies
 #   @return [Array, nil]
 #
 # @!attribute [rw] body_html_url
@@ -116,7 +116,7 @@ DocumentLoadMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] topic
+# @!attribute [rw] topics
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
@@ -124,7 +124,7 @@ DocumentLoadMatch = Struct.new(
 DocumentListMatch = Struct.new(
   :abstract,
   :action,
-  :agency,
+  :agencies,
   :body_html_url,
   :citation,
   :document_number,
@@ -134,7 +134,7 @@ DocumentListMatch = Struct.new(
   :publication_date,
   :signing_date,
   :title,
-  :topic,
+  :topics,
   :type,
   keyword_init: true
 )

@@ -271,7 +271,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"abstract"` |  |
 | `"action"` |  |
-| `"agency"` |  |
+| `"agencies"` |  |
 | `"body_html_url"` |  |
 | `"citation"` |  |
 | `"document_number"` |  |
@@ -281,7 +281,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"publication_date"` |  |
 | `"signing_date"` |  |
 | `"title"` |  |
-| `"topic"` |  |
+| `"topics"` |  |
 | `"type"` |  |
 
 Operations: List, Load.
@@ -310,7 +310,7 @@ Create an instance: `document := client.Document(nil)`
 | --- | --- | --- |
 | `abstract` | `string` |  |
 | `action` | `string` |  |
-| `agency` | `[]any` |  |
+| `agencies` | `[]any` |  |
 | `body_html_url` | `string` |  |
 | `citation` | `string` |  |
 | `document_number` | `string` |  |
@@ -320,7 +320,7 @@ Create an instance: `document := client.Document(nil)`
 | `publication_date` | `string` |  |
 | `signing_date` | `string` |  |
 | `title` | `string` |  |
-| `topic` | `[]any` |  |
+| `topics` | `[]any` |  |
 | `type` | `string` |  |
 
 #### Example: Load

@@ -26,8 +26,8 @@ import {
 describe('DocumentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FEDERALREGISTER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FEDERALREGISTER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FEDERAL_REGISTER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FEDERAL_REGISTER_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FederalRegisterSDK.test()
@@ -63,7 +63,7 @@ describe('DocumentEntity', async () => {
     const document_ref01_ent = client.Document()
     const document_ref01_match: any = {}
 
-    const document_ref01_list = await document_ref01_ent.list(document_ref01_match)
+    const document_ref01_list = (await document_ref01_ent.list(document_ref01_match)).map((e: any) => e.data())
 
 
 

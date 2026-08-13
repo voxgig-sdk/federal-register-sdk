@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from federalregister_sdk.utility.voxgig_struct import voxgig_struct as vs
 from federalregister_sdk import FederalRegisterSDK
-from core import helpers
+from federalregister_sdk.core import helpers
 from test import runner
 
 
@@ -102,11 +102,11 @@ def _document_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FEDERALREGISTER_TEST_DOCUMENT_ENTID": {},
-        "FEDERALREGISTER_TEST_LIVE": "FALSE",
+        "FEDERAL_REGISTER_TEST_DOCUMENT_ENTID": {},
+        "FEDERAL_REGISTER_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FEDERALREGISTER_TEST_LIVE") == "TRUE"
+    live = env.get("FEDERAL_REGISTER_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

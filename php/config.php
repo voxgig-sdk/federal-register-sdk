@@ -46,7 +46,7 @@ class FederalRegisterConfig
             ],
             [
               'active' => true,
-              'name' => 'agency',
+              'name' => 'agencies',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 2,
@@ -116,7 +116,7 @@ class FederalRegisterConfig
             ],
             [
               'active' => true,
-              'name' => 'topic',
+              'name' => 'topics',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 12,
@@ -248,6 +248,7 @@ class FederalRegisterConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/documents',
                   'parts' => [
@@ -270,7 +271,7 @@ class FederalRegisterConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
@@ -308,6 +309,7 @@ class FederalRegisterConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/documents/{document_number}',
                   'parts' => [

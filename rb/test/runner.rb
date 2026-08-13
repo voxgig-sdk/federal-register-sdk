@@ -23,8 +23,8 @@ module FederalRegisterTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FEDERALREGISTER_TEST_LIVE")
-    override = getenv("FEDERALREGISTER_TEST_OVERRIDE")
+    live = getenv("FEDERAL_REGISTER_TEST_LIVE")
+    override = getenv("FEDERAL_REGISTER_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FederalRegisterTestRunner
       end
     end
 
-    explain = getenv("FEDERALREGISTER_TEST_EXPLAIN")
-    m["FEDERALREGISTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FEDERAL_REGISTER_TEST_EXPLAIN")
+    m["FEDERAL_REGISTER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

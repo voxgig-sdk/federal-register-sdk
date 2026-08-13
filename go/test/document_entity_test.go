@@ -92,7 +92,7 @@ func TestDocumentEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set FEDERALREGISTER_TEST_DOCUMENT_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set FEDERAL_REGISTER_TEST_DOCUMENT_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -170,21 +170,21 @@ func documentBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("FEDERALREGISTER_TEST_DOCUMENT_ENTID")
+	entidEnvRaw := os.Getenv("FEDERAL_REGISTER_TEST_DOCUMENT_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"FEDERALREGISTER_TEST_DOCUMENT_ENTID": idmap,
-		"FEDERALREGISTER_TEST_LIVE":      "FALSE",
-		"FEDERALREGISTER_TEST_EXPLAIN":   "FALSE",
+		"FEDERAL_REGISTER_TEST_DOCUMENT_ENTID": idmap,
+		"FEDERAL_REGISTER_TEST_LIVE":      "FALSE",
+		"FEDERAL_REGISTER_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["FEDERALREGISTER_TEST_DOCUMENT_ENTID"])
+	idmapResolved := core.ToMapAny(env["FEDERAL_REGISTER_TEST_DOCUMENT_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["FEDERALREGISTER_TEST_LIVE"] == "TRUE" {
+	if env["FEDERAL_REGISTER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -193,13 +193,13 @@ func documentBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewFederalRegisterSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["FEDERALREGISTER_TEST_LIVE"] == "TRUE"
+	live := env["FEDERAL_REGISTER_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["FEDERALREGISTER_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["FEDERAL_REGISTER_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FederalRegister',
   }
 
 
@@ -70,7 +70,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "agency",
+          "name": "agencies",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 2
@@ -140,7 +140,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "topic",
+          "name": "topics",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 12
@@ -272,6 +272,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/documents",
               "parts": [
@@ -294,7 +295,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -332,6 +333,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/documents/{document_number}",
               "parts": [

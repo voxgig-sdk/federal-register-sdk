@@ -8,7 +8,7 @@
 export interface Document {
   abstract?: string
   action?: string
-  agency?: any[]
+  agencies?: any[]
   body_html_url?: string
   citation?: string
   document_number?: string
@@ -18,7 +18,7 @@ export interface Document {
   publication_date?: string
   signing_date?: string
   title?: string
-  topic?: any[]
+  topics?: any[]
   type?: string
 }
 
@@ -29,7 +29,7 @@ export interface DocumentLoadMatch {
 export interface DocumentListMatch {
   abstract?: string
   action?: string
-  agency?: any[]
+  agencies?: any[]
   body_html_url?: string
   citation?: string
   document_number?: string
@@ -39,7 +39,7 @@ export interface DocumentListMatch {
   publication_date?: string
   signing_date?: string
   title?: string
-  topic?: any[]
+  topics?: any[]
   type?: string
 }
 

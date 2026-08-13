@@ -94,7 +94,7 @@ $document = $client->Document();
 | --- | --- | --- | --- |
 | `abstract` | `string` | No |  |
 | `action` | `string` | No |  |
-| `agency` | `array` | No |  |
+| `agencies` | `array` | No |  |
 | `body_html_url` | `string` | No |  |
 | `citation` | `string` | No |  |
 | `document_number` | `string` | No |  |
@@ -104,7 +104,7 @@ $document = $client->Document();
 | `publication_date` | `string` | No |  |
 | `signing_date` | `string` | No |  |
 | `title` | `string` | No |  |
-| `topic` | `array` | No |  |
+| `topics` | `array` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

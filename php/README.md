@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Document record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Document record (throws on error).
     $document = $client->Document()->load(["id" => "example_id"]);
     print_r($document);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = FederalRegisterSDK::test([
     "entity" => ["document" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $document = $client->Document()->list();
 print_r($document);
 ```
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -264,7 +265,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `abstract` |  |
 | `action` |  |
-| `agency` |  |
+| `agencies` |  |
 | `body_html_url` |  |
 | `citation` |  |
 | `document_number` |  |
@@ -274,7 +275,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `publication_date` |  |
 | `signing_date` |  |
 | `title` |  |
-| `topic` |  |
+| `topics` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -303,7 +304,7 @@ Create an instance: `$document = $client->Document();`
 | --- | --- | --- |
 | `abstract` | `string` |  |
 | `action` | `string` |  |
-| `agency` | `array` |  |
+| `agencies` | `array` |  |
 | `body_html_url` | `string` |  |
 | `citation` | `string` |  |
 | `document_number` | `string` |  |
@@ -313,13 +314,13 @@ Create an instance: `$document = $client->Document();`
 | `publication_date` | `string` |  |
 | `signing_date` | `string` |  |
 | `title` | `string` |  |
-| `topic` | `array` |  |
+| `topics` | `array` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Document record (throws on error).
+// load() returns the ENTITY — call data_get() for the Document record (throws on error).
 $document = $client->Document()->load(["id" => "document_id"]);
 ```
 

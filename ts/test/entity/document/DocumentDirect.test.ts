@@ -19,11 +19,15 @@ import {
 describe('DocumentDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FEDERALREGISTER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FEDERALREGISTER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FEDERAL_REGISTER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FEDERAL_REGISTER_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new FederalRegisterSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -115,17 +119,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'FEDERALREGISTER_TEST_DOCUMENT_ENTID': {},
-    'FEDERALREGISTER_TEST_LIVE': 'FALSE',
+    'FEDERAL_REGISTER_TEST_DOCUMENT_ENTID': {},
+    'FEDERAL_REGISTER_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.FEDERALREGISTER_TEST_LIVE
+  const live = 'TRUE' === env.FEDERAL_REGISTER_TEST_LIVE
 
   if (live) {
     const client = new FederalRegisterSDK({
     })
 
-    let idmap: any = env['FEDERALREGISTER_TEST_DOCUMENT_ENTID']
+    let idmap: any = env['FEDERAL_REGISTER_TEST_DOCUMENT_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

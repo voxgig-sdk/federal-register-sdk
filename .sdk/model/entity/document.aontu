@@ -16,7 +16,7 @@ main: kit: entity: document: {
       type: "`$STRING`"
     }
     {
-      name: "agency"
+      name: "agencies"
       req: false
       type: "`$ARRAY`"
     }
@@ -66,7 +66,7 @@ main: kit: entity: document: {
       type: "`$STRING`"
     }
     {
-      name: "topic"
+      name: "topics"
       req: false
       type: "`$ARRAY`"
     }
@@ -205,7 +205,7 @@ main: kit: entity: document: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

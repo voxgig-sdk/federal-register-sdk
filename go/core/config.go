@@ -40,7 +40,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "agency",
+						"name": "agencies",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -110,7 +110,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "topic",
+						"name": "topics",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 12,
@@ -242,6 +242,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/documents",
 								"parts": []any{
@@ -264,12 +265,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -302,6 +302,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/documents/{document_number}",
 								"parts": []any{
@@ -326,7 +327,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

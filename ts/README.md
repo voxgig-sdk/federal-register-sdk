@@ -35,7 +35,9 @@ const client = new FederalRegisterSDK()
 
 ### 2. List document records
 
-`list()` resolves to an array of Document objects — iterate it directly:
+`list()` resolves to an array of Document ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const documents = await client.Document().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = FederalRegisterSDK.test()
 
 const document = await client.Document().list()
-// document is a bare entity populated with mock response data
+// document is the entity, populated with mock response data
+// — call document.data() for the record itself
 console.log(document)
 ```
 
@@ -301,7 +304,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `abstract` |  |
 | `action` |  |
-| `agency` |  |
+| `agencies` |  |
 | `body_html_url` |  |
 | `citation` |  |
 | `document_number` |  |
@@ -311,7 +314,7 @@ The `prepare()` method returns:
 | `publication_date` |  |
 | `signing_date` |  |
 | `title` |  |
-| `topic` |  |
+| `topics` |  |
 | `type` |  |
 
 Operations: list, load.
@@ -340,7 +343,7 @@ Create an instance: `const document = client.Document()`
 | --- | --- | --- |
 | `abstract` | `string` |  |
 | `action` | `string` |  |
-| `agency` | `any[]` |  |
+| `agencies` | `any[]` |  |
 | `body_html_url` | `string` |  |
 | `citation` | `string` |  |
 | `document_number` | `string` |  |
@@ -350,7 +353,7 @@ Create an instance: `const document = client.Document()`
 | `publication_date` | `string` |  |
 | `signing_date` | `string` |  |
 | `title` | `string` |  |
-| `topic` | `any[]` |  |
+| `topics` | `any[]` |  |
 | `type` | `string` |  |
 
 #### Example: Load

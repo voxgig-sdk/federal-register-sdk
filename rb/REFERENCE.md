@@ -95,7 +95,7 @@ document = client.Document
 | --- | --- | --- | --- |
 | `abstract` | `String` | No |  |
 | `action` | `String` | No |  |
-| `agency` | `Array` | No |  |
+| `agencies` | `Array` | No |  |
 | `body_html_url` | `String` | No |  |
 | `citation` | `String` | No |  |
 | `document_number` | `String` | No |  |
@@ -105,7 +105,7 @@ document = client.Document
 | `publication_date` | `String` | No |  |
 | `signing_date` | `String` | No |  |
 | `title` | `String` | No |  |
-| `topic` | `Array` | No |  |
+| `topics` | `Array` | No |  |
 | `type` | `String` | No |  |
 
 ### Operations

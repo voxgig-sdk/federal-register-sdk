@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Document record (raises on error).
+  # load returns the ENTITY — call data_get for the Document record (raises on error).
   document = client.Document.load({ "id" => "example_id" })
   puts document
 rescue => err
@@ -134,7 +134,8 @@ client = FederalRegisterSDK.test({
   "entity" => { "document" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 document = client.Document.list()
 puts document
 ```
@@ -254,7 +255,7 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `abstract` |  |
 | `action` |  |
-| `agency` |  |
+| `agencies` |  |
 | `body_html_url` |  |
 | `citation` |  |
 | `document_number` |  |
@@ -264,7 +265,7 @@ returns a result `Hash` with these keys:
 | `publication_date` |  |
 | `signing_date` |  |
 | `title` |  |
-| `topic` |  |
+| `topics` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -293,7 +294,7 @@ Create an instance: `document = client.Document`
 | --- | --- | --- |
 | `abstract` | `String` |  |
 | `action` | `String` |  |
-| `agency` | `Array` |  |
+| `agencies` | `Array` |  |
 | `body_html_url` | `String` |  |
 | `citation` | `String` |  |
 | `document_number` | `String` |  |
@@ -303,13 +304,13 @@ Create an instance: `document = client.Document`
 | `publication_date` | `String` |  |
 | `signing_date` | `String` |  |
 | `title` | `String` |  |
-| `topic` | `Array` |  |
+| `topics` | `Array` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Document record (raises on error).
+# load returns the ENTITY — call data_get for the Document record (raises on error).
 document = client.Document.load({ "id" => "document_id" })
 ```
 

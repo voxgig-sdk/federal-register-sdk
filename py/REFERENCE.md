@@ -89,7 +89,7 @@ document = client.Document()
 | --- | --- | --- | --- |
 | `abstract` | `str` | No |  |
 | `action` | `str` | No |  |
-| `agency` | `list` | No |  |
+| `agencies` | `list` | No |  |
 | `body_html_url` | `str` | No |  |
 | `citation` | `str` | No |  |
 | `document_number` | `str` | No |  |
@@ -99,7 +99,7 @@ document = client.Document()
 | `publication_date` | `str` | No |  |
 | `signing_date` | `str` | No |  |
 | `title` | `str` | No |  |
-| `topic` | `list` | No |  |
+| `topics` | `list` | No |  |
 | `type` | `str` | No |  |
 
 ### Operations

@@ -17,7 +17,7 @@ class Document
 {
     public ?string $abstract = null;
     public ?string $action = null;
-    public ?array $agency = null;
+    public ?array $agencies = null;
     public ?string $body_html_url = null;
     public ?string $citation = null;
     public ?string $document_number = null;
@@ -27,7 +27,7 @@ class Document
     public ?string $publication_date = null;
     public ?string $signing_date = null;
     public ?string $title = null;
-    public ?array $topic = null;
+    public ?array $topics = null;
     public ?string $type = null;
 }
 
@@ -42,7 +42,7 @@ class DocumentListMatch
 {
     public ?string $abstract = null;
     public ?string $action = null;
-    public ?array $agency = null;
+    public ?array $agencies = null;
     public ?string $body_html_url = null;
     public ?string $citation = null;
     public ?string $document_number = null;
@@ -52,7 +52,7 @@ class DocumentListMatch
     public ?string $publication_date = null;
     public ?string $signing_date = null;
     public ?string $title = null;
-    public ?array $topic = null;
+    public ?array $topics = null;
     public ?string $type = null;
 }
 

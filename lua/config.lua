@@ -40,7 +40,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "agency",
+            ["name"] = "agencies",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 2,
@@ -110,7 +110,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "topic",
+            ["name"] = "topics",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 12,
@@ -242,6 +242,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/documents",
                 ["parts"] = {
@@ -264,7 +265,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.results`",
                 },
                 ["index$"] = 0,
               },
@@ -302,6 +303,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/documents/{document_number}",
                 ["parts"] = {

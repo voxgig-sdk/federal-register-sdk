@@ -92,7 +92,7 @@ local document = client:Document(nil)
 | --- | --- | --- | --- |
 | `abstract` | `string` | No |  |
 | `action` | `string` | No |  |
-| `agency` | `table` | No |  |
+| `agencies` | `table` | No |  |
 | `body_html_url` | `string` | No |  |
 | `citation` | `string` | No |  |
 | `document_number` | `string` | No |  |
@@ -102,7 +102,7 @@ local document = client:Document(nil)
 | `publication_date` | `string` | No |  |
 | `signing_date` | `string` | No |  |
 | `title` | `string` | No |  |
-| `topic` | `table` | No |  |
+| `topics` | `table` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

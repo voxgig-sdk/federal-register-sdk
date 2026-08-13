@@ -41,7 +41,7 @@ module FederalRegisterConfig
             },
             {
               "active" => true,
-              "name" => "agency",
+              "name" => "agencies",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 2,
@@ -111,7 +111,7 @@ module FederalRegisterConfig
             },
             {
               "active" => true,
-              "name" => "topic",
+              "name" => "topics",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 12,
@@ -243,6 +243,7 @@ module FederalRegisterConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/documents",
                   "parts" => [
@@ -265,7 +266,7 @@ module FederalRegisterConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.results`",
                   },
                   "index$" => 0,
                 },
@@ -303,6 +304,7 @@ module FederalRegisterConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/documents/{document_number}",
                   "parts" => [

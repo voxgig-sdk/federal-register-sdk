@@ -100,7 +100,7 @@ fmt.Println(document.GetName()) // "document"
 | --- | --- | --- | --- |
 | `abstract` | `string` | No |  |
 | `action` | `string` | No |  |
-| `agency` | `[]any` | No |  |
+| `agencies` | `[]any` | No |  |
 | `body_html_url` | `string` | No |  |
 | `citation` | `string` | No |  |
 | `document_number` | `string` | No |  |
@@ -110,7 +110,7 @@ fmt.Println(document.GetName()) // "document"
 | `publication_date` | `string` | No |  |
 | `signing_date` | `string` | No |  |
 | `title` | `string` | No |  |
-| `topic` | `[]any` | No |  |
+| `topics` | `[]any` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

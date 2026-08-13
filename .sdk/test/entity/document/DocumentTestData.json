@@ -4,7 +4,7 @@
       "DOCUMENT00": {
         "abstract": "s8c",
         "action": "s8d",
-        "agency": [],
+        "agencies": [],
         "body_html_url": "s8f",
         "citation": "s90",
         "document_number": "s91",
@@ -14,14 +14,14 @@
         "publication_date": "s95",
         "signing_date": "s96",
         "title": "s97",
-        "topic": [],
+        "topics": [],
         "type": "s99",
         "id": "DOCUMENT00"
       },
       "DOCUMENT01": {
         "abstract": "s118",
         "action": "s119",
-        "agency": [],
+        "agencies": [],
         "body_html_url": "s11b",
         "citation": "s11c",
         "document_number": "s11d",
@@ -31,14 +31,14 @@
         "publication_date": "s121",
         "signing_date": "s122",
         "title": "s123",
-        "topic": [],
+        "topics": [],
         "type": "s125",
         "id": "DOCUMENT01"
       },
       "DOCUMENT02": {
         "abstract": "s1a4",
         "action": "s1a5",
-        "agency": [],
+        "agencies": [],
         "body_html_url": "s1a7",
         "citation": "s1a8",
         "document_number": "s1a9",
@@ -48,7 +48,7 @@
         "publication_date": "s1ad",
         "signing_date": "s1ae",
         "title": "s1af",
-        "topic": [],
+        "topics": [],
         "type": "s1b1",
         "id": "DOCUMENT02"
       }
@@ -59,7 +59,7 @@
       "document_ref01": {
         "abstract": "s230",
         "action": "s231",
-        "agency": [],
+        "agencies": [],
         "body_html_url": "s233",
         "citation": "s234",
         "document_number": "s235",
@@ -69,7 +69,7 @@
         "publication_date": "s239",
         "signing_date": "s23a",
         "title": "s23b",
-        "topic": [],
+        "topics": [],
         "type": "s23d"
       }
     }

@@ -8,6 +8,7 @@ guide: {
   entity: document: {
     path: "/documents": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/documents/{document_number}": {
       rename: param: "document_number": *"id"

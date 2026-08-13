@@ -243,7 +243,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `abstract` |  |
 | `action` |  |
-| `agency` |  |
+| `agencies` |  |
 | `body_html_url` |  |
 | `citation` |  |
 | `document_number` |  |
@@ -253,7 +253,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `publication_date` |  |
 | `signing_date` |  |
 | `title` |  |
-| `topic` |  |
+| `topics` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -282,7 +282,7 @@ Create an instance: `local document = client:Document(nil)`
 | --- | --- | --- |
 | `abstract` | `string` |  |
 | `action` | `string` |  |
-| `agency` | `table` |  |
+| `agencies` | `table` |  |
 | `body_html_url` | `string` |  |
 | `citation` | `string` |  |
 | `document_number` | `string` |  |
@@ -292,7 +292,7 @@ Create an instance: `local document = client:Document(nil)`
 | `publication_date` | `string` |  |
 | `signing_date` | `string` |  |
 | `title` | `string` |  |
-| `topic` | `table` |  |
+| `topics` | `table` |  |
 | `type` | `string` |  |
 
 #### Example: Load

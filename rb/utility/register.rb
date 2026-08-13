@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FederalRegisterUtility.registrar = ->(u) {
   u.prepare_params = FederalRegisterUtilities::PrepareParams
   u.prepare_path = FederalRegisterUtilities::PreparePath
   u.prepare_query = FederalRegisterUtilities::PrepareQuery
+  u.graphql_body = FederalRegisterUtilities::GraphqlBody
+  u.graphql_errors = FederalRegisterUtilities::GraphqlErrors
   u.result_basic = FederalRegisterUtilities::ResultBasic
   u.result_body = FederalRegisterUtilities::ResultBody
   u.result_headers = FederalRegisterUtilities::ResultHeaders

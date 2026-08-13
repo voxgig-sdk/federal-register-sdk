@@ -113,11 +113,11 @@ function document_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FEDERALREGISTER_TEST_DOCUMENT_ENTID"] = {},
-    ["FEDERALREGISTER_TEST_LIVE"] = "FALSE",
+    ["FEDERAL_REGISTER_TEST_DOCUMENT_ENTID"] = {},
+    ["FEDERAL_REGISTER_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FEDERALREGISTER_TEST_LIVE"] == "TRUE"
+  local live = env["FEDERAL_REGISTER_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

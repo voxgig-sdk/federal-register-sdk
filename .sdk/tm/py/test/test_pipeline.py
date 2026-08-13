@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import FederalRegisterSDK
-from core.error import FederalRegisterError
-from core.result import FederalRegisterResult
-from core.response import FederalRegisterResponse
-from core.spec import FederalRegisterSpec
-from feature.base_feature import FederalRegisterBaseFeature
+from projectname_sdk.core.error import FederalRegisterError
+from projectname_sdk.core.result import FederalRegisterResult
+from projectname_sdk.core.response import FederalRegisterResponse
+from projectname_sdk.core.spec import FederalRegisterSpec
+from projectname_sdk.feature.base_feature import FederalRegisterBaseFeature
 
 
 def _client():

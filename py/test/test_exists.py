@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# FederalRegister SDK exists test
 
 import pytest
 from federalregister_sdk import FederalRegisterSDK
