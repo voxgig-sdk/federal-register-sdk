@@ -42,8 +42,8 @@ class TestDocumentEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from federalregister_sdk.config import make_config
-        cfg = make_config()
+        from federalregister_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = FederalRegisterSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})

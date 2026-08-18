@@ -23,8 +23,8 @@ class FederalRegisterSDK:
         utility = FederalRegisterUtility()
         self._utility = utility
 
-        from federalregister_sdk.config import make_config
-        config = make_config()
+        from federalregister_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

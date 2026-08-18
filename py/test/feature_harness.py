@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from federalregister_sdk.config import make_config
+from federalregister_sdk.config import shared_config
 from federalregister_sdk.features import _make_feature
 from federalregister_sdk.core.control import FederalRegisterControl
 from federalregister_sdk.core.error import FederalRegisterError
@@ -24,7 +24,7 @@ from federalregister_sdk.core.spec import FederalRegisterSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

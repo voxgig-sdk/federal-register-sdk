@@ -40,7 +40,7 @@ class FederalRegisterSDK
         $utility = new FederalRegisterUtility();
         $this->_utility = $utility;
 
-        $config = FederalRegisterConfig::make_config();
+        $config = FederalRegisterConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

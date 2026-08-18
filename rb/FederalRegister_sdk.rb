@@ -28,7 +28,7 @@ class FederalRegisterSDK
     utility = FederalRegisterUtility.new
     @_utility = utility
 
-    config = FederalRegisterConfig.make_config
+    config = FederalRegisterConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
