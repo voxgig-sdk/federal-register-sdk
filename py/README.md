@@ -256,20 +256,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `abstract` |  |
-| `action` |  |
-| `agencies` |  |
-| `body_html_url` |  |
-| `citation` |  |
-| `document_number` |  |
-| `full_text_xml_url` |  |
-| `html_url` |  |
-| `pdf_url` |  |
-| `publication_date` |  |
-| `signing_date` |  |
-| `title` |  |
-| `topics` |  |
-| `type` |  |
+| `abstract` | Brief summary of the document |
+| `action` | Action being taken by the document |
+| `agencies` | Agencies associated with the document |
+| `body_html_url` | URL to the full HTML body of the document |
+| `citation` | Official citation for the document |
+| `document_number` | Unique identifier for the document |
+| `full_text_xml_url` | URL to the full text XML of the document |
+| `html_url` | URL to the document on FederalRegister.gov |
+| `pdf_url` | URL to the PDF version of the document |
+| `publication_date` | Date the document was published |
+| `signing_date` | Date the document was signed |
+| `title` | Title of the document |
+| `topics` | Topics associated with the document |
+| `type` | Type of document |
 
 Operations: List, Load.
 
@@ -295,20 +295,20 @@ Create an instance: `document = client.Document()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstract` | `str` |  |
-| `action` | `str` |  |
-| `agencies` | `list` |  |
-| `body_html_url` | `str` |  |
-| `citation` | `str` |  |
-| `document_number` | `str` |  |
-| `full_text_xml_url` | `str` |  |
-| `html_url` | `str` |  |
-| `pdf_url` | `str` |  |
-| `publication_date` | `str` |  |
-| `signing_date` | `str` |  |
-| `title` | `str` |  |
-| `topics` | `list` |  |
-| `type` | `str` |  |
+| `abstract` | `str` | Brief summary of the document |
+| `action` | `str` | Action being taken by the document |
+| `agencies` | `list` | Agencies associated with the document |
+| `body_html_url` | `str` | URL to the full HTML body of the document |
+| `citation` | `str` | Official citation for the document |
+| `document_number` | `str` | Unique identifier for the document |
+| `full_text_xml_url` | `str` | URL to the full text XML of the document |
+| `html_url` | `str` | URL to the document on FederalRegister.gov |
+| `pdf_url` | `str` | URL to the PDF version of the document |
+| `publication_date` | `str` | Date the document was published |
+| `signing_date` | `str` | Date the document was signed |
+| `title` | `str` | Title of the document |
+| `topics` | `list` | Topics associated with the document |
+| `type` | `str` | Type of document |
 
 #### Example: Load
 

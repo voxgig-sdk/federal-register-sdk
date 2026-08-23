@@ -36,84 +36,98 @@
               "active": true,
               "name": "abstract",
               "req": false,
+              "short": "Brief summary of the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "action",
               "req": false,
+              "short": "Action being taken by the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "agencies",
               "req": false,
+              "short": "Agencies associated with the document",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "body_html_url",
               "req": false,
+              "short": "URL to the full HTML body of the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "citation",
               "req": false,
+              "short": "Official citation for the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "document_number",
               "req": false,
+              "short": "Unique identifier for the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "full_text_xml_url",
               "req": false,
+              "short": "URL to the full text XML of the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "html_url",
               "req": false,
+              "short": "URL to the document on FederalRegister.gov",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pdf_url",
               "req": false,
+              "short": "URL to the PDF version of the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "publication_date",
               "req": false,
+              "short": "Date the document was published",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "signing_date",
               "req": false,
+              "short": "Date the document was signed",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the document",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "topics",
               "req": false,
+              "short": "Topics associated with the document",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of document",
               "type": "`$STRING`"
             }
           ],

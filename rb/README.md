@@ -253,20 +253,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `abstract` |  |
-| `action` |  |
-| `agencies` |  |
-| `body_html_url` |  |
-| `citation` |  |
-| `document_number` |  |
-| `full_text_xml_url` |  |
-| `html_url` |  |
-| `pdf_url` |  |
-| `publication_date` |  |
-| `signing_date` |  |
-| `title` |  |
-| `topics` |  |
-| `type` |  |
+| `abstract` | Brief summary of the document |
+| `action` | Action being taken by the document |
+| `agencies` | Agencies associated with the document |
+| `body_html_url` | URL to the full HTML body of the document |
+| `citation` | Official citation for the document |
+| `document_number` | Unique identifier for the document |
+| `full_text_xml_url` | URL to the full text XML of the document |
+| `html_url` | URL to the document on FederalRegister.gov |
+| `pdf_url` | URL to the PDF version of the document |
+| `publication_date` | Date the document was published |
+| `signing_date` | Date the document was signed |
+| `title` | Title of the document |
+| `topics` | Topics associated with the document |
+| `type` | Type of document |
 
 Operations: List, Load.
 
@@ -292,20 +292,20 @@ Create an instance: `document = client.Document`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstract` | `String` |  |
-| `action` | `String` |  |
-| `agencies` | `Array` |  |
-| `body_html_url` | `String` |  |
-| `citation` | `String` |  |
-| `document_number` | `String` |  |
-| `full_text_xml_url` | `String` |  |
-| `html_url` | `String` |  |
-| `pdf_url` | `String` |  |
-| `publication_date` | `String` |  |
-| `signing_date` | `String` |  |
-| `title` | `String` |  |
-| `topics` | `Array` |  |
-| `type` | `String` |  |
+| `abstract` | `String` | Brief summary of the document |
+| `action` | `String` | Action being taken by the document |
+| `agencies` | `Array` | Agencies associated with the document |
+| `body_html_url` | `String` | URL to the full HTML body of the document |
+| `citation` | `String` | Official citation for the document |
+| `document_number` | `String` | Unique identifier for the document |
+| `full_text_xml_url` | `String` | URL to the full text XML of the document |
+| `html_url` | `String` | URL to the document on FederalRegister.gov |
+| `pdf_url` | `String` | URL to the PDF version of the document |
+| `publication_date` | `String` | Date the document was published |
+| `signing_date` | `String` | Date the document was signed |
+| `title` | `String` | Title of the document |
+| `topics` | `Array` | Topics associated with the document |
+| `type` | `String` | Type of document |
 
 #### Example: Load
 

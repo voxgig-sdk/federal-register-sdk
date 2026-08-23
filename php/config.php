@@ -33,6 +33,9 @@ class FederalRegisterConfig
         return [
             "main" => [
                 "name" => "FederalRegister",
+                "slug" => "federal-register",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -55,58 +58,72 @@ class FederalRegisterConfig
           'fields' => [
             [
               'name' => 'abstract',
+              'short' => 'Brief summary of the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'action',
+              'short' => 'Action being taken by the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'agencies',
+              'short' => 'Agencies associated with the document',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'body_html_url',
+              'short' => 'URL to the full HTML body of the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'citation',
+              'short' => 'Official citation for the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'document_number',
+              'short' => 'Unique identifier for the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'full_text_xml_url',
+              'short' => 'URL to the full text XML of the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'html_url',
+              'short' => 'URL to the document on FederalRegister.gov',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'pdf_url',
+              'short' => 'URL to the PDF version of the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'publication_date',
+              'short' => 'Date the document was published',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'signing_date',
+              'short' => 'Date the document was signed',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'title',
+              'short' => 'Title of the document',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'topics',
+              'short' => 'Topics associated with the document',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'type',
+              'short' => 'Type of document',
               'type' => '`$STRING`',
             ],
           ],

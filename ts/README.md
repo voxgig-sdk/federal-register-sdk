@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -302,20 +302,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `abstract` |  |
-| `action` |  |
-| `agencies` |  |
-| `body_html_url` |  |
-| `citation` |  |
-| `document_number` |  |
-| `full_text_xml_url` |  |
-| `html_url` |  |
-| `pdf_url` |  |
-| `publication_date` |  |
-| `signing_date` |  |
-| `title` |  |
-| `topics` |  |
-| `type` |  |
+| `abstract` | Brief summary of the document |
+| `action` | Action being taken by the document |
+| `agencies` | Agencies associated with the document |
+| `body_html_url` | URL to the full HTML body of the document |
+| `citation` | Official citation for the document |
+| `document_number` | Unique identifier for the document |
+| `full_text_xml_url` | URL to the full text XML of the document |
+| `html_url` | URL to the document on FederalRegister.gov |
+| `pdf_url` | URL to the PDF version of the document |
+| `publication_date` | Date the document was published |
+| `signing_date` | Date the document was signed |
+| `title` | Title of the document |
+| `topics` | Topics associated with the document |
+| `type` | Type of document |
 
 Operations: list, load.
 
@@ -341,20 +341,20 @@ Create an instance: `const document = client.Document()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstract` | `string` |  |
-| `action` | `string` |  |
-| `agencies` | `any[]` |  |
-| `body_html_url` | `string` |  |
-| `citation` | `string` |  |
-| `document_number` | `string` |  |
-| `full_text_xml_url` | `string` |  |
-| `html_url` | `string` |  |
-| `pdf_url` | `string` |  |
-| `publication_date` | `string` |  |
-| `signing_date` | `string` |  |
-| `title` | `string` |  |
-| `topics` | `any[]` |  |
-| `type` | `string` |  |
+| `abstract` | `string` | Brief summary of the document |
+| `action` | `string` | Action being taken by the document |
+| `agencies` | `any[]` | Agencies associated with the document |
+| `body_html_url` | `string` | URL to the full HTML body of the document |
+| `citation` | `string` | Official citation for the document |
+| `document_number` | `string` | Unique identifier for the document |
+| `full_text_xml_url` | `string` | URL to the full text XML of the document |
+| `html_url` | `string` | URL to the document on FederalRegister.gov |
+| `pdf_url` | `string` | URL to the PDF version of the document |
+| `publication_date` | `string` | Date the document was published |
+| `signing_date` | `string` | Date the document was signed |
+| `title` | `string` | Title of the document |
+| `topics` | `any[]` | Topics associated with the document |
+| `type` | `string` | Type of document |
 
 #### Example: Load
 

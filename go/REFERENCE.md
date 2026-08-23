@@ -98,20 +98,20 @@ fmt.Println(document.GetName()) // "document"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | `string` | No |  |
-| `action` | `string` | No |  |
-| `agencies` | `[]any` | No |  |
-| `body_html_url` | `string` | No |  |
-| `citation` | `string` | No |  |
-| `document_number` | `string` | No |  |
-| `full_text_xml_url` | `string` | No |  |
-| `html_url` | `string` | No |  |
-| `pdf_url` | `string` | No |  |
-| `publication_date` | `string` | No |  |
-| `signing_date` | `string` | No |  |
-| `title` | `string` | No |  |
-| `topics` | `[]any` | No |  |
-| `type` | `string` | No |  |
+| `abstract` | `string` | No | Brief summary of the document |
+| `action` | `string` | No | Action being taken by the document |
+| `agencies` | `[]any` | No | Agencies associated with the document |
+| `body_html_url` | `string` | No | URL to the full HTML body of the document |
+| `citation` | `string` | No | Official citation for the document |
+| `document_number` | `string` | No | Unique identifier for the document |
+| `full_text_xml_url` | `string` | No | URL to the full text XML of the document |
+| `html_url` | `string` | No | URL to the document on FederalRegister.gov |
+| `pdf_url` | `string` | No | URL to the PDF version of the document |
+| `publication_date` | `string` | No | Date the document was published |
+| `signing_date` | `string` | No | Date the document was signed |
+| `title` | `string` | No | Title of the document |
+| `topics` | `[]any` | No | Topics associated with the document |
+| `type` | `string` | No | Type of document |
 
 ### Operations
 

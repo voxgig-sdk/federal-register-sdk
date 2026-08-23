@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "FederalRegister",
+			"slug": "federal-register",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,58 +36,72 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "abstract",
+						"short": "Brief summary of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "action",
+						"short": "Action being taken by the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "agencies",
+						"short": "Agencies associated with the document",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "body_html_url",
+						"short": "URL to the full HTML body of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "citation",
+						"short": "Official citation for the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "document_number",
+						"short": "Unique identifier for the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "full_text_xml_url",
+						"short": "URL to the full text XML of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "html_url",
+						"short": "URL to the document on FederalRegister.gov",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pdf_url",
+						"short": "URL to the PDF version of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "publication_date",
+						"short": "Date the document was published",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "signing_date",
+						"short": "Date the document was signed",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "topics",
+						"short": "Topics associated with the document",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of document",
 						"type": "`$STRING`",
 					},
 				},

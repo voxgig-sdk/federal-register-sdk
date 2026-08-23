@@ -93,20 +93,20 @@ document = client.Document
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstract` | `String` | No |  |
-| `action` | `String` | No |  |
-| `agencies` | `Array` | No |  |
-| `body_html_url` | `String` | No |  |
-| `citation` | `String` | No |  |
-| `document_number` | `String` | No |  |
-| `full_text_xml_url` | `String` | No |  |
-| `html_url` | `String` | No |  |
-| `pdf_url` | `String` | No |  |
-| `publication_date` | `String` | No |  |
-| `signing_date` | `String` | No |  |
-| `title` | `String` | No |  |
-| `topics` | `Array` | No |  |
-| `type` | `String` | No |  |
+| `abstract` | `String` | No | Brief summary of the document |
+| `action` | `String` | No | Action being taken by the document |
+| `agencies` | `Array` | No | Agencies associated with the document |
+| `body_html_url` | `String` | No | URL to the full HTML body of the document |
+| `citation` | `String` | No | Official citation for the document |
+| `document_number` | `String` | No | Unique identifier for the document |
+| `full_text_xml_url` | `String` | No | URL to the full text XML of the document |
+| `html_url` | `String` | No | URL to the document on FederalRegister.gov |
+| `pdf_url` | `String` | No | URL to the PDF version of the document |
+| `publication_date` | `String` | No | Date the document was published |
+| `signing_date` | `String` | No | Date the document was signed |
+| `title` | `String` | No | Title of the document |
+| `topics` | `Array` | No | Topics associated with the document |
+| `type` | `String` | No | Type of document |
 
 ### Operations
 
