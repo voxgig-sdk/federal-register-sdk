@@ -92,10 +92,14 @@ describe("DocumentEntity", function()
     assert.is_table(document_ref01_list_result)
 
     -- LOAD
-    local document_ref01_match_dt0 = {}
+    local document_ref01_match_dt0 = {
+      id = document_ref01_data["id"],
+    }
     local document_ref01_data_dt0_loaded, err = document_ref01_ent:load(document_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(document_ref01_data_dt0_loaded)
+    local document_ref01_data_dt0_load_result = helpers.to_map(type(document_ref01_data_dt0_loaded) == 'table' and document_ref01_data_dt0_loaded.data_get and document_ref01_data_dt0_loaded:data_get() or document_ref01_data_dt0_loaded)
+    assert.is_not_nil(document_ref01_data_dt0_load_result)
+    assert.are.equal(document_ref01_data_dt0_load_result["id"], document_ref01_data["id"])
 
   end)
 end)

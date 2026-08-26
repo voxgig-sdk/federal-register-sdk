@@ -83,9 +83,13 @@ class DocumentEntityTest < Minitest::Test
     assert document_ref01_list_result.is_a?(Array)
 
     # LOAD
-    document_ref01_match_dt0 = {}
+    document_ref01_match_dt0 = {
+      "id" => document_ref01_data["id"],
+    }
     document_ref01_data_dt0_loaded = document_ref01_ent.load(document_ref01_match_dt0, nil)
-    assert !document_ref01_data_dt0_loaded.nil?
+    document_ref01_data_dt0_load_result = Helpers.to_map(document_ref01_data_dt0_loaded.respond_to?(:data_get) ? document_ref01_data_dt0_loaded.data_get : document_ref01_data_dt0_loaded)
+    assert !document_ref01_data_dt0_load_result.nil?
+    assert_equal document_ref01_data_dt0_load_result["id"], document_ref01_data["id"]
 
   end
 end

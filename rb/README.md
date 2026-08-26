@@ -37,7 +37,7 @@ begin
   # list returns an Array of Document records — iterate directly.
   documents = client.Document.list
   documents.each do |item|
-    puts "#{item["abstract"]}"
+    puts "#{item["id"]} #{item["abstract"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -261,6 +261,7 @@ returns a result `Hash` with these keys:
 | `document_number` | Unique identifier for the document |
 | `full_text_xml_url` | URL to the full text XML of the document |
 | `html_url` | URL to the document on FederalRegister.gov |
+| `id` |  |
 | `pdf_url` | URL to the PDF version of the document |
 | `publication_date` | Date the document was published |
 | `signing_date` | Date the document was signed |
@@ -300,6 +301,7 @@ Create an instance: `document = client.Document`
 | `document_number` | `String` | Unique identifier for the document |
 | `full_text_xml_url` | `String` | URL to the full text XML of the document |
 | `html_url` | `String` | URL to the document on FederalRegister.gov |
+| `id` | `String` |  |
 | `pdf_url` | `String` | URL to the PDF version of the document |
 | `publication_date` | `String` | Date the document was published |
 | `signing_date` | `String` | Date the document was signed |

@@ -23,6 +23,7 @@ class Document
     public ?string $document_number = null;
     public ?string $full_text_xml_url = null;
     public ?string $html_url = null;
+    public ?string $id = null;
     public ?string $pdf_url = null;
     public ?string $publication_date = null;
     public ?string $signing_date = null;
@@ -48,6 +49,7 @@ class DocumentListMatch
     public ?string $document_number = null;
     public ?string $full_text_xml_url = null;
     public ?string $html_url = null;
+    public ?string $id = null;
     public ?string $pdf_url = null;
     public ?string $publication_date = null;
     public ?string $signing_date = null;

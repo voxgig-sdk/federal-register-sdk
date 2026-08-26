@@ -14,6 +14,7 @@ export interface Document {
   document_number?: string
   full_text_xml_url?: string
   html_url?: string
+  id?: string
   pdf_url?: string
   publication_date?: string
   signing_date?: string
@@ -35,6 +36,7 @@ export interface DocumentListMatch {
   document_number?: string
   full_text_xml_url?: string
   html_url?: string
+  id?: string
   pdf_url?: string
   publication_date?: string
   signing_date?: string

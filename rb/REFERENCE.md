@@ -101,6 +101,7 @@ document = client.Document
 | `document_number` | `String` | No | Unique identifier for the document |
 | `full_text_xml_url` | `String` | No | URL to the full text XML of the document |
 | `html_url` | `String` | No | URL to the document on FederalRegister.gov |
+| `id` | `String` | No |  |
 | `pdf_url` | `String` | No | URL to the PDF version of the document |
 | `publication_date` | `String` | No | Date the document was published |
 | `signing_date` | `String` | No | Date the document was signed |

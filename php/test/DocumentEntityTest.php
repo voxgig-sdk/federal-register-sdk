@@ -93,9 +93,13 @@ class DocumentEntityTest extends TestCase
         $this->assertIsArray($document_ref01_list_result);
 
         // LOAD
-        $document_ref01_match_dt0 = [];
+        $document_ref01_match_dt0 = [
+            "id" => $document_ref01_data["id"],
+        ];
         $document_ref01_data_dt0_loaded = $document_ref01_ent->load($document_ref01_match_dt0, null);
-        $this->assertNotNull($document_ref01_data_dt0_loaded);
+        $document_ref01_data_dt0_load_result = Helpers::to_map(is_object($document_ref01_data_dt0_loaded) && method_exists($document_ref01_data_dt0_loaded, 'data_get') ? $document_ref01_data_dt0_loaded->data_get() : $document_ref01_data_dt0_loaded);
+        $this->assertNotNull($document_ref01_data_dt0_load_result);
+        $this->assertEquals($document_ref01_data_dt0_load_result["id"], $document_ref01_data["id"]);
 
     }
 }

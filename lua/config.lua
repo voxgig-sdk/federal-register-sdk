@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -68,6 +69,10 @@ local function make_config()
           {
             ["name"] = "html_url",
             ["short"] = "URL to the document on FederalRegister.gov",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

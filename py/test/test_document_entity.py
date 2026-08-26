@@ -88,9 +88,13 @@ class TestDocumentEntity:
         assert isinstance(document_ref01_list_result, list)
 
         # LOAD
-        document_ref01_match_dt0 = {}
+        document_ref01_match_dt0 = {
+            "id": document_ref01_data["id"],
+        }
         document_ref01_data_dt0_loaded = document_ref01_ent.load(document_ref01_match_dt0, None)
-        assert document_ref01_data_dt0_loaded is not None
+        document_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(document_ref01_data_dt0_loaded))
+        assert document_ref01_data_dt0_load_result is not None
+        assert document_ref01_data_dt0_load_result["id"] == document_ref01_data["id"]
 
 
 

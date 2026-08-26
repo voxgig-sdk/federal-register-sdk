@@ -25,6 +25,7 @@ class Document(TypedDict, total=False):
     document_number: str
     full_text_xml_url: str
     html_url: str
+    id: str
     pdf_url: str
     publication_date: str
     signing_date: str
@@ -46,6 +47,7 @@ class DocumentListMatch(TypedDict, total=False):
     document_number: str
     full_text_xml_url: str
     html_url: str
+    id: str
     pdf_url: str
     publication_date: str
     signing_date: str

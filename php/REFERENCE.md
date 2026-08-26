@@ -100,6 +100,7 @@ $document = $client->Document();
 | `document_number` | `string` | No | Unique identifier for the document |
 | `full_text_xml_url` | `string` | No | URL to the full text XML of the document |
 | `html_url` | `string` | No | URL to the document on FederalRegister.gov |
+| `id` | `string` | No |  |
 | `pdf_url` | `string` | No | URL to the PDF version of the document |
 | `publication_date` | `string` | No | Date the document was published |
 | `signing_date` | `string` | No | Date the document was signed |

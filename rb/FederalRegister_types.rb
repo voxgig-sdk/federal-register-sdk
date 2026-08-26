@@ -34,6 +34,9 @@
 # @!attribute [rw] html_url
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] pdf_url
 #   @return [String, nil]
 #
@@ -60,6 +63,7 @@ Document = Struct.new(
   :document_number,
   :full_text_xml_url,
   :html_url,
+  :id,
   :pdf_url,
   :publication_date,
   :signing_date,
@@ -104,6 +108,9 @@ DocumentLoadMatch = Struct.new(
 # @!attribute [rw] html_url
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] pdf_url
 #   @return [String, nil]
 #
@@ -130,6 +137,7 @@ DocumentListMatch = Struct.new(
   :document_number,
   :full_text_xml_url,
   :html_url,
+  :id,
   :pdf_url,
   :publication_date,
   :signing_date,

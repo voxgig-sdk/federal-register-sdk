@@ -22,6 +22,7 @@ type Document struct {
 	DocumentNumber *string `json:"document_number,omitempty"`
 	FullTextXmlUrl *string `json:"full_text_xml_url,omitempty"`
 	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *string `json:"id,omitempty"`
 	PdfUrl *string `json:"pdf_url,omitempty"`
 	PublicationDate *string `json:"publication_date,omitempty"`
 	SigningDate *string `json:"signing_date,omitempty"`
@@ -45,6 +46,7 @@ type DocumentListMatch struct {
 	DocumentNumber *string `json:"document_number,omitempty"`
 	FullTextXmlUrl *string `json:"full_text_xml_url,omitempty"`
 	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *string `json:"id,omitempty"`
 	PdfUrl *string `json:"pdf_url,omitempty"`
 	PublicationDate *string `json:"publication_date,omitempty"`
 	SigningDate *string `json:"signing_date,omitempty"`

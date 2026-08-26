@@ -15,6 +15,7 @@
 ---@field document_number? string
 ---@field full_text_xml_url? string
 ---@field html_url? string
+---@field id? string
 ---@field pdf_url? string
 ---@field publication_date? string
 ---@field signing_date? string
@@ -34,6 +35,7 @@
 ---@field document_number? string
 ---@field full_text_xml_url? string
 ---@field html_url? string
+---@field id? string
 ---@field pdf_url? string
 ---@field publication_date? string
 ---@field signing_date? string

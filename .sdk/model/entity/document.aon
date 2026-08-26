@@ -54,6 +54,11 @@ main: kit: entity: document: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "pdf_url"
       req: false
       short: "URL to the PDF version of the document"
@@ -90,6 +95,11 @@ main: kit: entity: document: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "document"
   op: {

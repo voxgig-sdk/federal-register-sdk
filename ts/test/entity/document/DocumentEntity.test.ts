@@ -66,6 +66,12 @@ describe('DocumentEntity', async () => {
     const document_ref01_list = (await document_ref01_ent.list(document_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const document_ref01_match_dt0: any = {}
+    document_ref01_match_dt0.id = document_ref01_data.id
+    const document_ref01_data_dt0 = (await document_ref01_ent.load(document_ref01_match_dt0)).data()
+    assert(document_ref01_data_dt0.id === document_ref01_data.id)
+
 
   })
 })

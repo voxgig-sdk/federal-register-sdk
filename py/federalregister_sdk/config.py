@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -89,6 +90,10 @@ def make_config():
           {
             "name": "html_url",
             "short": "URL to the document on FederalRegister.gov",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

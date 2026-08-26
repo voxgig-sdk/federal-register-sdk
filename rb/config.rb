@@ -28,6 +28,7 @@ module FederalRegisterConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -80,6 +81,10 @@ module FederalRegisterConfig
             {
               "name" => "html_url",
               "short" => "URL to the document on FederalRegister.gov",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

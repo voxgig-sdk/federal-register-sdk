@@ -264,6 +264,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `document_number` | Unique identifier for the document |
 | `full_text_xml_url` | URL to the full text XML of the document |
 | `html_url` | URL to the document on FederalRegister.gov |
+| `id` |  |
 | `pdf_url` | URL to the PDF version of the document |
 | `publication_date` | Date the document was published |
 | `signing_date` | Date the document was signed |
@@ -303,6 +304,7 @@ Create an instance: `document = client.Document()`
 | `document_number` | `str` | Unique identifier for the document |
 | `full_text_xml_url` | `str` | URL to the full text XML of the document |
 | `html_url` | `str` | URL to the document on FederalRegister.gov |
+| `id` | `str` |  |
 | `pdf_url` | `str` | URL to the PDF version of the document |
 | `publication_date` | `str` | Date the document was published |
 | `signing_date` | `str` | Date the document was signed |

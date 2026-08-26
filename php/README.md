@@ -38,7 +38,7 @@ try {
     // list() returns an array of Document records — iterate directly.
     $documents = $client->Document()->list();
     foreach ($documents as $item) {
-        echo $item["abstract"] . "\n";
+        echo $item["id"] . " " . $item["abstract"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -271,6 +271,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `document_number` | Unique identifier for the document |
 | `full_text_xml_url` | URL to the full text XML of the document |
 | `html_url` | URL to the document on FederalRegister.gov |
+| `id` |  |
 | `pdf_url` | URL to the PDF version of the document |
 | `publication_date` | Date the document was published |
 | `signing_date` | Date the document was signed |
@@ -310,6 +311,7 @@ Create an instance: `$document = $client->Document();`
 | `document_number` | `string` | Unique identifier for the document |
 | `full_text_xml_url` | `string` | URL to the full text XML of the document |
 | `html_url` | `string` | URL to the document on FederalRegister.gov |
+| `id` | `string` |  |
 | `pdf_url` | `string` | URL to the PDF version of the document |
 | `publication_date` | `string` | Date the document was published |
 | `signing_date` | `string` | Date the document was signed |
