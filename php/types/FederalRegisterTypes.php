@@ -36,25 +36,22 @@ class Document
 class DocumentLoadMatch
 {
     public string $id;
+    public ?string $field = null;
 }
 
 /** Request payload for Document#list. */
 class DocumentListMatch
 {
-    public ?string $abstract = null;
-    public ?string $action = null;
-    public ?array $agencies = null;
-    public ?string $body_html_url = null;
-    public ?string $citation = null;
-    public ?string $document_number = null;
-    public ?string $full_text_xml_url = null;
-    public ?string $html_url = null;
-    public ?string $id = null;
-    public ?string $pdf_url = null;
-    public ?string $publication_date = null;
-    public ?string $signing_date = null;
-    public ?string $title = null;
-    public ?array $topics = null;
-    public ?string $type = null;
+    public ?array $conditions_agency = null;
+    public ?string $conditions_publication_date_gte = null;
+    public ?string $conditions_publication_date_lte = null;
+    public ?int $conditions_publication_date_year = null;
+    public ?string $conditions_term = null;
+    public ?array $conditions_type = null;
+    public ?array $field = null;
+    public ?string $format = null;
+    public ?string $order = null;
+    public ?int $page = null;
+    public ?int $per_page = null;
 }
 

@@ -34,23 +34,23 @@ class Document(TypedDict, total=False):
     type: str
 
 
-class DocumentLoadMatch(TypedDict):
+class DocumentLoadMatchRequired(TypedDict):
     id: str
+
+
+class DocumentLoadMatch(DocumentLoadMatchRequired, total=False):
+    field: str
 
 
 class DocumentListMatch(TypedDict, total=False):
-    abstract: str
-    action: str
-    agencies: list
-    body_html_url: str
-    citation: str
-    document_number: str
-    full_text_xml_url: str
-    html_url: str
-    id: str
-    pdf_url: str
-    publication_date: str
-    signing_date: str
-    title: str
-    topics: list
-    type: str
+    conditions_agency: list
+    conditions_publication_date_gte: str
+    conditions_publication_date_lte: str
+    conditions_publication_date_year: int
+    conditions_term: str
+    conditions_type: list
+    field: list
+    format: str
+    order: str
+    page: int
+    per_page: int

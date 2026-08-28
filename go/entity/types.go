@@ -34,25 +34,22 @@ type Document struct {
 // DocumentLoadMatch is the typed request payload for Document.LoadTyped.
 type DocumentLoadMatch struct {
 	Id string `json:"id"`
+	Field *string `json:"field,omitempty"`
 }
 
 // DocumentListMatch is the typed request payload for Document.ListTyped.
 type DocumentListMatch struct {
-	Abstract *string `json:"abstract,omitempty"`
-	Action *string `json:"action,omitempty"`
-	Agencies *[]any `json:"agencies,omitempty"`
-	BodyHtmlUrl *string `json:"body_html_url,omitempty"`
-	Citation *string `json:"citation,omitempty"`
-	DocumentNumber *string `json:"document_number,omitempty"`
-	FullTextXmlUrl *string `json:"full_text_xml_url,omitempty"`
-	HtmlUrl *string `json:"html_url,omitempty"`
-	Id *string `json:"id,omitempty"`
-	PdfUrl *string `json:"pdf_url,omitempty"`
-	PublicationDate *string `json:"publication_date,omitempty"`
-	SigningDate *string `json:"signing_date,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Topics *[]any `json:"topics,omitempty"`
-	Type *string `json:"type,omitempty"`
+	ConditionsAgency *[]any `json:"conditions_agency,omitempty"`
+	ConditionsPublicationDateGte *string `json:"conditions_publication_date_gte,omitempty"`
+	ConditionsPublicationDateLte *string `json:"conditions_publication_date_lte,omitempty"`
+	ConditionsPublicationDateYear *int `json:"conditions_publication_date_year,omitempty"`
+	ConditionsTerm *string `json:"conditions_term,omitempty"`
+	ConditionsType *[]any `json:"conditions_type,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
