@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -82,6 +93,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "uri",
           "name": "body_html_url",
           "short": "URL to the full HTML body of the document",
           "type": "`$STRING`"
@@ -97,11 +109,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "full_text_xml_url",
           "short": "URL to the full text XML of the document",
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "html_url",
           "short": "URL to the document on FederalRegister.gov",
           "type": "`$STRING`"
@@ -111,16 +125,19 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "pdf_url",
           "short": "URL to the PDF version of the document",
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "publication_date",
           "short": "Date the document was published",
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "signing_date",
           "short": "Date the document was signed",
           "type": "`$STRING`"
@@ -141,6 +158,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "document",
       "op": {
         "list": {
@@ -240,8 +261,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/documents",
-              "parts": [
-                "documents"
+              "segments": [
+                {
+                  "lit": "documents"
+                }
               ],
               "select": {
                 "exist": [
@@ -261,7 +284,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "documents"
+              ]
             }
           ]
         },
@@ -294,15 +320,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/documents/{document_number}",
-              "parts": [
-                "documents",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "document_number": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "documents"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "field",
@@ -312,7 +342,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "documents",
+                "{id}"
+              ]
             }
           ]
         }
@@ -328,6 +362,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

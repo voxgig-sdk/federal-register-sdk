@@ -51,6 +51,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "body_html_url",
 						"short": "URL to the full HTML body of the document",
 						"type": "`$STRING`",
@@ -66,11 +67,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "full_text_xml_url",
 						"short": "URL to the full text XML of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "html_url",
 						"short": "URL to the document on FederalRegister.gov",
 						"type": "`$STRING`",
@@ -80,16 +83,19 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "pdf_url",
 						"short": "URL to the PDF version of the document",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "publication_date",
 						"short": "Date the document was published",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "signing_date",
 						"short": "Date the document was signed",
 						"type": "`$STRING`",
@@ -109,6 +115,10 @@ func MakeConfig() map[string]any {
 						"short": "Type of document",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "document",
 				"op": map[string]any{
@@ -209,8 +219,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/documents",
-								"parts": []any{
-									"documents",
+								"segments": []any{
+									map[string]any{
+										"lit": "documents",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -230,6 +242,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.results`",
+								},
+								"parts": []any{
+									"documents",
 								},
 							},
 						},
@@ -263,13 +278,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/documents/{document_number}",
-								"parts": []any{
-									"documents",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"document_number": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "documents",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -282,6 +301,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"documents",
+									"{id}",
+								},
 							},
 						},
 					},
@@ -292,6 +315,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

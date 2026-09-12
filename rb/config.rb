@@ -59,6 +59,7 @@ module FederalRegisterConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "uri",
               "name" => "body_html_url",
               "short" => "URL to the full HTML body of the document",
               "type" => "`$STRING`",
@@ -74,11 +75,13 @@ module FederalRegisterConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "full_text_xml_url",
               "short" => "URL to the full text XML of the document",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "html_url",
               "short" => "URL to the document on FederalRegister.gov",
               "type" => "`$STRING`",
@@ -88,16 +91,19 @@ module FederalRegisterConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "pdf_url",
               "short" => "URL to the PDF version of the document",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "publication_date",
               "short" => "Date the document was published",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "signing_date",
               "short" => "Date the document was signed",
               "type" => "`$STRING`",
@@ -118,6 +124,10 @@ module FederalRegisterConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "document",
           "op" => {
             "list" => {
@@ -217,8 +227,10 @@ module FederalRegisterConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/documents",
-                  "parts" => [
-                    "documents",
+                  "segments" => [
+                    {
+                      "lit" => "documents",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -239,6 +251,9 @@ module FederalRegisterConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "documents",
+                  ],
                 },
               ],
             },
@@ -271,15 +286,19 @@ module FederalRegisterConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/documents/{document_number}",
-                  "parts" => [
-                    "documents",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "document_number" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "documents",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "field",
@@ -290,6 +309,10 @@ module FederalRegisterConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "documents",
+                    "{id}",
+                  ],
                 },
               ],
             },

@@ -1,6 +1,14 @@
 # FederalRegister SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -68,6 +76,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uri",
             "name": "body_html_url",
             "short": "URL to the full HTML body of the document",
             "type": "`$STRING`",
@@ -83,11 +92,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "full_text_xml_url",
             "short": "URL to the full text XML of the document",
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "html_url",
             "short": "URL to the document on FederalRegister.gov",
             "type": "`$STRING`",
@@ -97,16 +108,19 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "pdf_url",
             "short": "URL to the PDF version of the document",
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "publication_date",
             "short": "Date the document was published",
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "signing_date",
             "short": "Date the document was signed",
             "type": "`$STRING`",
@@ -127,6 +141,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "document",
         "op": {
           "list": {
@@ -226,8 +244,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/documents",
-                "parts": [
-                  "documents",
+                "segments": [
+                  {
+                    "lit": "documents",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -248,6 +268,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "documents",
+                ],
               },
             ],
           },
@@ -280,15 +303,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/documents/{document_number}",
-                "parts": [
-                  "documents",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "document_number": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "documents",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "field",
@@ -299,6 +326,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "documents",
+                  "{id}",
+                ],
               },
             ],
           },
