@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FederalRegisterSDK } from '@voxgig-sdk/federal-register'
+import { FederalRegisterSDK } from '@voxgig-sdk/federal-register-sdk'
 
 const client = new FederalRegisterSDK()
 ```
@@ -453,7 +453,7 @@ federal-register/
 Import the SDK from the package root:
 
 ```ts
-import { FederalRegisterSDK } from '@voxgig-sdk/federal-register'
+import { FederalRegisterSDK } from '@voxgig-sdk/federal-register-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local results, err = client:Document():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
+| TypeScript | `@voxgig-sdk/federal-register-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
 | Python | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
 | PHP | `voxgig-sdk/federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/federal-register-sdk/go` | `go get github.com/voxgig-sdk/federal-register-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Document():list()
 ### TypeScript
 
 ```ts
-import { FederalRegisterSDK } from '@voxgig-sdk/federal-register'
+import { FederalRegisterSDK } from '@voxgig-sdk/federal-register-sdk'
 
 const client = new FederalRegisterSDK()
 
