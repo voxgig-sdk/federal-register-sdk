@@ -1,12 +1,18 @@
 # FederalRegister SDK feature factory
 
 from federalregister_sdk.feature.base_feature import FederalRegisterBaseFeature
+from federalregister_sdk.feature.ratelimit_feature import FederalRegisterRatelimitFeature
+from federalregister_sdk.feature.retry_feature import FederalRegisterRetryFeature
 from federalregister_sdk.feature.test_feature import FederalRegisterTestFeature
+from federalregister_sdk.feature.timeout_feature import FederalRegisterTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FederalRegisterBaseFeature(),
+    "ratelimit": lambda: FederalRegisterRatelimitFeature(),
+    "retry": lambda: FederalRegisterRetryFeature(),
     "test": lambda: FederalRegisterTestFeature(),
+    "timeout": lambda: FederalRegisterTimeoutFeature(),
 }
 
 

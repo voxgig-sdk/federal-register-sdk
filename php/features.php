@@ -4,7 +4,10 @@ declare(strict_types=1);
 // FederalRegister SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class FederalRegisterFeatures
@@ -14,8 +17,14 @@ class FederalRegisterFeatures
         switch ($name) {
             case "base":
                 return new FederalRegisterBaseFeature();
+            case "ratelimit":
+                return new FederalRegisterRatelimitFeature();
+            case "retry":
+                return new FederalRegisterRetryFeature();
             case "test":
                 return new FederalRegisterTestFeature();
+            case "timeout":
+                return new FederalRegisterTimeoutFeature();
             default:
                 return new FederalRegisterBaseFeature();
         }
@@ -31,7 +40,10 @@ class FederalRegisterFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
