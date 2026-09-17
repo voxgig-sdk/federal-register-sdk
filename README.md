@@ -105,12 +105,12 @@ local results, err = client:Document():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/federal-register-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
-| Python | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
-| PHP | `voxgig-sdk/federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
+| TypeScript | `@voxgig-sdk/federal-register-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/tags) |
+| Python | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/tags) |
+| PHP | `voxgig-sdk/federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/federal-register-sdk/go` | `go get github.com/voxgig-sdk/federal-register-sdk/go@latest` |
-| Ruby | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
-| Lua | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/releases) |
+| Ruby | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/tags) |
+| Lua | `voxgig-sdk-federal-register` | publish pending — [install from git tag](https://github.com/voxgig-sdk/federal-register-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/federal-register-sdk/go-cli` | `go install github.com/voxgig-sdk/federal-register-sdk/go-cli/cmd/federal-register@latest` |
 | Go MCP server | `github.com/voxgig-sdk/federal-register-sdk/go-mcp` | `go get github.com/voxgig-sdk/federal-register-sdk/go-mcp@latest` |
 
